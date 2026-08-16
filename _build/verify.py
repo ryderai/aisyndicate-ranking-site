@@ -261,6 +261,23 @@ def main():
             checks += 1
             if needle in hay:
                 fails.append(f"REGRESSION: {name}")
+        # rescore numbers in prose must match the recomputed rescore, everywhere
+        P = {c["key"]: c["points"] for c in data["criteria"] if c["group"] == "ai"}
+        sole = [k for k in ai_keys if sum(1 for a in data["agencies"] if a["scores"][k]) == 1
+                and [x for x in data["agencies"] if x.get("is_publisher")][0]["scores"][k]]
+        keep = [k for k in ai_keys if k not in sole]
+        tot = lambda a, ks: sum(P[k] for k in ks if a["scores"][k])
+        pub = [a for a in data["agencies"] if a.get("is_publisher")][0]
+        runner = max(tot(a, keep) for a in data["agencies"] if not a.get("is_publisher"))
+        pub_re = tot(pub, keep)
+        for page in ("/methodology", "/llms.txt", "/llms-full.txt", f"/agency/{slugs[[i for i,a in enumerate(data['agencies']) if a.get('is_publisher')][0]]}"):
+            _, body, _ = get(page)
+            checks += 1
+            if f"on {runner}" not in body:
+                fails.append(f"{page}: rescore runner-up should be {runner}; stale number in prose")
+            checks += 1
+            if f"{pub_re} of {sum(P[k] for k in keep)}" not in body:
+                fails.append(f"{page}: publisher rescore should read {pub_re} of {sum(P[k] for k in keep)}")
         st7, also, _ = get("/also-measured")
         structural = [
             ("also-measured page lists every agency", all(a["name"] in also for a in data["agencies"])),
