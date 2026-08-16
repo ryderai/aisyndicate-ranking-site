@@ -1,19 +1,6 @@
-# Python
 __pycache__/
-*.py[cod]
-.venv/
-venv/
-
-# Node
+*.pyc
 node_modules/
-
-# Env / secrets
-.env
-.env.*
-*.pem
-
-# OS
+screenshots/
+*.zip
 .DS_Store
-
-# Vercel
-.vercel
