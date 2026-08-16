@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Findings — what 29 GEO agencies&#x27; own sites look like | The GEO Agency Index</title>
+<meta name="description" content="Five findings from auditing 29 GEO agencies on 14 August 2026: 1 of 29 publish all three AI-readability files, 28 of 29 robots.txt files never name an AI crawler, and four sites return a success status for files that do not exist.">
+<link rel="canonical" href="https://geo-agency-index.vercel.app/findings">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The GEO Agency Index">
+<meta property="og:title" content="Findings — what 29 GEO agencies&#x27; own sites look like | The GEO Agency Index">
+<meta property="og:description" content="Five findings from auditing 29 GEO agencies on 14 August 2026: 1 of 29 publish all three AI-readability files, 28 of 29 robots.txt files never name an AI crawler, and four sites return a success status for files that do not exist.">
+<meta property="og:url" content="https://geo-agency-index.vercel.app/findings">
+<meta property="og:image" content="https://geo-agency-index.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="googlebot" content="index,follow,max-snippet:-1">
+<meta name="ai-content-declaration" content="human-reviewed research; measurements automated">
+<meta name="dcterms.dateCopyrighted" content="2026">
+<meta name="article:published_time" content="2026-08-14">
+<link rel="alternate" type="text/markdown" href="https://geo-agency-index.vercel.app/findings.md" title="Markdown version">
+<link rel="alternate" type="application/rss+xml" href="https://geo-agency-index.vercel.app/feed.xml" title="The GEO Agency Index">
+<meta name="theme-color" content="#6366f1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%236366f1'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Design tokens lifted from aisyndicate.com (:root custom properties, read 15 Aug 2026) */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --bg:#fff; --bg-1:#fafbfc; --bg-2:#f5f8fb; --bg-3:#ecf2f8;
+ --ink:#0a2245; --ink-2:#2d4663; --ink-dim:#5a7290; --ink-faint:#9eb1c7;
+ --rule:#e1e8f0; --rule-2:#cdd9e5;
+ --accent:#6366f1; --accent-2:#8b5cf6; --accent-3:#3b82f6;
+ --accent-soft:#eef0ff; --accent-deep:#4338ca; --accent-ink:#fff;
+ --success:#00b833; --success-soft:#d6ffe2;
+ --warn:#ff9f43; --danger:#df1b41; --danger-soft:#fef2f2;
+ --display:"Inter Tight","Inter Tight Fallback",system-ui,-apple-system,"Segoe UI",sans-serif;
+ --body:"Inter","Inter Fallback",system-ui,-apple-system,"Segoe UI",sans-serif;
+ --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+ --max:1280px; --gutter:32px; --radius:14px; --radius-lg:22px;
+ --shadow-sm:0 1px 2px #0a22450a,0 1px 3px #0a22450f;
+ --shadow-md:0 4px 6px -1px #0a224514,0 2px 4px -1px #0a22450a;
+ --shadow:0 4px 16px -2px #0a224514,0 2px 4px -1px #0a22450a;
+ --shadow-lg:0 24px 48px -12px #0a224524,0 8px 16px -4px #0a22450f;
+ --grad:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.6;font-size:16.5px;
+ -webkit-font-smoothing:antialiased;font-feature-settings:"cv02","cv03","cv04","cv11"}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.narrow{max-width:820px}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-deep)}
+
+/* faint grid, same device as the marketing hero */
+.grid-bg{
+ background-image:linear-gradient(var(--bg-3) 1px,transparent 1px),linear-gradient(90deg,var(--bg-3) 1px,transparent 1px);
+ background-size:64px 64px;background-position:-1px -1px}
+
+/* disclosure strip */
+.disc{background:var(--accent-soft);border-bottom:1px solid #dfe3ff;font-size:14px;color:var(--accent-deep);padding:10px 0}
+.disc b{font-weight:700}
+.disc a{color:var(--accent-deep);text-decoration:underline;text-underline-offset:2px}
+
+/* header */
+.top{border-bottom:1px solid var(--rule);background:#fffffff2;backdrop-filter:saturate(180%) blur(12px);
+ position:sticky;top:0;z-index:30}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:18px;font-weight:800;
+ letter-spacing:-.02em;color:var(--ink);text-transform:uppercase}
+.logo:hover{color:var(--ink)}
+.logo svg{flex:0 0 auto}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav{display:flex;align-items:center;gap:26px;font-size:15px}
+.nav a{color:var(--accent);font-weight:500}
+.nav a.on{color:var(--ink);font-weight:600}
+.nav .navcta{background:var(--grad);color:#fff;font-weight:600;padding:9px 18px;border-radius:999px;
+ box-shadow:0 4px 14px -2px #6366f159}
+.nav .navcta:hover{color:#fff;box-shadow:0 6px 20px -2px #6366f173;transform:translateY(-1px)}
+
+/* hero */
+.hero{padding:72px 0 52px;border-bottom:1px solid var(--rule);background:var(--bg-1)}
+.kicker{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--accent-deep);font-weight:600;margin-bottom:22px;background:var(--accent-soft);
+ padding:6px 12px;border-radius:999px}
+h1{font-family:var(--display);font-size:clamp(38px,5.6vw,64px);line-height:1.04;letter-spacing:-.035em;
+ font-weight:800;max-width:17ch;color:var(--ink)}
+h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:19.5px;color:var(--ink-2);margin-top:22px;max-width:60ch;line-height:1.6}
+.stamp{margin-top:30px;font-size:13.5px;color:var(--ink-dim);display:flex;flex-wrap:wrap;gap:10px 24px;
+ font-family:var(--mono)}
+.stamp b{color:var(--ink);font-weight:600}
+
+/* stat band */
+.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--rule);
+ border-bottom:1px solid var(--rule)}
+.stat{background:#fff;padding:30px 26px}
+.stat .n{font-family:var(--display);font-size:44px;line-height:1;font-weight:800;letter-spacing:-.04em;color:var(--ink)}
+.stat .n.hot{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .t{font-size:14.5px;color:var(--ink-dim);margin-top:11px;line-height:1.5}
+
+section{padding:60px 0}
+section.alt{background:var(--bg-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+h2{font-family:var(--display);font-size:clamp(26px,3vw,34px);letter-spacing:-.03em;font-weight:800;
+ margin-bottom:10px;color:var(--ink);line-height:1.15}
+h3{font-family:var(--display);font-size:19px;font-weight:700;margin-bottom:8px;letter-spacing:-.02em;color:var(--ink)}
+.sub{color:var(--ink-dim);margin-bottom:28px;max-width:66ch;font-size:16.5px}
+p{margin-bottom:15px}
+p:last-child{margin-bottom:0}
+
+/* table */
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm)}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:920px}
+th{text-align:left;padding:15px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+ text-transform:uppercase;color:var(--ink-dim);font-weight:600;border-bottom:1px solid var(--rule);
+ background:var(--bg-2);white-space:nowrap}
+th.c,td.c{text-align:center}
+td{padding:15px 12px;border-bottom:1px solid var(--bg-3);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--bg-1)}
+tr.me{background:var(--accent-soft)}
+tr.me:hover{background:#e5e9ff}
+tr.me td{border-bottom-color:#dfe3ff}
+.rk{font-family:var(--display);font-size:21px;font-weight:800;color:var(--ink-faint);width:60px;white-space:nowrap;
+ letter-spacing:-.03em}
+tr.me .rk{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rk .eq{font-size:12px;color:var(--ink-faint);font-weight:500;-webkit-text-fill-color:var(--ink-faint)}
+.ag{font-family:var(--display);font-weight:700;font-size:16px;display:block;letter-spacing:-.02em;color:var(--ink)}
+a.ag:hover{color:var(--accent-deep)}
+.dm{font-size:12.5px;color:var(--ink-faint);font-family:var(--mono)}
+.tag{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.07em;
+ text-transform:uppercase;background:var(--grad);color:#fff;padding:3px 8px;border-radius:999px;
+ margin-left:8px;vertical-align:2px}
+.y{color:var(--success);font-weight:700}
+.n{color:var(--ink-faint);font-weight:600}
+.sc{font-family:var(--display);font-size:20px;font-weight:800;white-space:nowrap;letter-spacing:-.03em;color:var(--ink)}
+.bar{height:5px;border-radius:999px;background:var(--bg-3);margin-top:6px;width:76px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--grad);border-radius:999px}
+.legend{display:flex;flex-wrap:wrap;gap:10px 24px;font-size:13.5px;color:var(--ink-dim);margin-top:18px}
+
+/* findings */
+.finds{display:grid;gap:16px}
+.find{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);padding:26px 28px;
+ box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.find:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+.find .no{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--accent);
+ text-transform:uppercase;margin-bottom:10px}
+.find p{color:var(--ink-2);font-size:16px}
+.find p b{color:var(--ink);font-weight:650}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);padding:22px 24px;
+ box-shadow:var(--shadow-sm)}
+.card h3{font-size:16.5px}
+.card p{font-size:15px;color:var(--ink-dim);margin:0}
+
+/* profile */
+.pf{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+.pfbox{background:#fff;border:1px solid var(--rule);border-radius:var(--radius-lg);padding:26px;
+ position:sticky;top:92px;box-shadow:var(--shadow)}
+.pfbox .big{font-family:var(--display);font-size:56px;line-height:1;font-weight:800;letter-spacing:-.045em;
+ background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pfbox .of{font-size:13.5px;color:var(--ink-dim);margin-bottom:20px;font-family:var(--mono)}
+.pfrow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-3);
+ font-size:14.5px;color:var(--ink-2)}
+.pfrow:last-of-type{border-bottom:0}
+.pfrow b{color:var(--ink);font-family:var(--display);font-weight:700}
+.chk{list-style:none}
+.chk li{padding:17px 0;border-bottom:1px solid var(--bg-3);display:grid;grid-template-columns:26px 1fr;gap:12px}
+.chk li:last-child{border-bottom:0}
+.chk .mk{font-weight:800;font-size:17px;line-height:1.45}
+.chk .lb{font-family:var(--display);font-weight:700;margin-bottom:4px;letter-spacing:-.015em}
+.chk .ev{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+.note{background:var(--accent-soft);border:1px solid #dfe3ff;border-radius:var(--radius);padding:17px 19px;
+ font-size:15px;color:var(--ink-2);margin-top:24px}
+.note b{font-weight:700;color:var(--accent-deep)}
+
+/* cta */
+.cta{background:var(--ink);color:#fff;border-radius:var(--radius-lg);padding:42px 44px;position:relative;
+ overflow:hidden;box-shadow:var(--shadow-lg)}
+.cta:before{content:"";position:absolute;inset:0;background:radial-gradient(900px 380px at 88% -30%,#6366f14d,transparent 65%)}
+.cta>*{position:relative}
+.cta h2{color:#fff}
+.cta p{color:#b6c4d8;max-width:60ch;font-size:16.5px}
+.btn{display:inline-block;background:var(--grad);color:#fff;font-weight:650;padding:13px 26px;
+ border-radius:999px;margin-top:22px;font-size:16px;box-shadow:0 6px 20px -3px #6366f166;font-family:var(--body)}
+.btn:hover{color:#fff;transform:translateY(-1px);box-shadow:0 10px 26px -3px #6366f180}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #33456099;margin-left:10px;box-shadow:none}
+.btn.ghost:hover{background:#ffffff14;box-shadow:none}
+
+/* method */
+.mt{border-left:2px solid var(--bg-3);padding-left:26px;margin-bottom:32px}
+.mt .pts{font-family:var(--mono);font-size:11.5px;color:var(--accent);font-weight:600;text-transform:uppercase;
+ letter-spacing:.08em;margin-bottom:8px}
+.mt p{font-size:15.5px;color:var(--ink-2)}
+.mt .how{font-size:14.5px;color:var(--ink-dim);margin-top:9px}
+code{font-family:var(--mono);font-size:13px;background:var(--bg-2);border:1px solid var(--rule);
+ border-radius:6px;padding:2px 6px;color:var(--accent-deep)}
+pre{background:var(--ink);color:#dfe7f3;padding:20px 22px;border-radius:var(--radius);overflow-x:auto;
+ font-size:13px;font-family:var(--mono);line-height:1.7;margin:16px 0;box-shadow:var(--shadow-md)}
+pre code{background:none;border:0;color:inherit;padding:0}
+ul li{margin-bottom:6px}
+
+/* footer */
+footer{border-top:1px solid var(--rule);padding:44px 0 60px;font-size:14.5px;color:var(--ink-dim);background:var(--bg-2)}
+footer a{color:var(--ink-2)}
+footer a:hover{color:var(--accent-deep)}
+.fgrid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;margin-bottom:28px}
+.fdisc{border-top:1px solid var(--rule);padding-top:24px;max-width:78ch;line-height:1.65}
+.fdisc b{color:var(--ink)}
+
+@media(max-width:880px){
+ :root{--gutter:20px}
+ .pf{grid-template-columns:1fr;gap:30px}
+ .pfbox{position:static}
+ .nav a:not(.navcta){display:none}
+ .nav{gap:12px}
+ body{font-size:16px}
+ .cta{padding:30px 24px}
+ .hero{padding:48px 0 40px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"https://geo-agency-index.vercel.app/findings#a","headline":"What 29 GEO agencies' own websites actually look like","description":"Five findings from auditing 29 GEO agencies on 14 August 2026.","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en-US","author":{"@type":"Organization","name":"AI Syndicate","url":"https://www.aisyndicate.com/"},"publisher":{"@type":"Organization","name":"The GEO Agency Index","url":"https://geo-agency-index.vercel.app"},"isPartOf":{"@type":"WebSite","name":"The GEO Agency Index","url":"https://geo-agency-index.vercel.app"},"citation":["Aggarwal et al., GEO: Generative Engine Optimization, KDD 2024, arXiv:2311.09735","Pew Research Center, Google users are less likely to click on links when an AI summary appears, 22 July 2025","Ahrefs, Top Brand Visibility Factors in ChatGPT, AI Mode and AI Overviews, 12 December 2025","Ahrefs, We Analyzed 137K Sites: 97% of llms.txt Files Never Get Read, 15 June 2026"]}</script>
+</head>
+<body>
+<div class="disc"><div class="wrap"><b>Disclosure:</b> This index is published by AI Syndicate, which is ranked in it. Every score comes from a public file you can check yourself &mdash; <a href="/methodology">here is how</a>.</div></div>
+<header class="top"><div class="wrap">
+<a class="logo" href="/"><svg viewBox="0 0 100 100" width="30" height="30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lm-spoke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#3b82f6"/></linearGradient><radialGradient id="lm-hub" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#c4b5fd"/><stop offset="0.5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#4338ca"/></radialGradient><linearGradient id="lm-node" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs><g><line x1="50" y1="50" x2="50.0000" y2="18.0000" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="72.6274" y2="27.3726" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="82.0000" y2="50.0000" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="72.6274" y2="72.6274" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="50.0000" y2="82.0000" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="27.3726" y2="72.6274" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="18.0000" y2="50.0000" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="27.3726" y2="27.3726" stroke="url(#lm-spoke)" stroke-width="3" stroke-linecap="round"/> <circle cx="50.0000" cy="12.0000" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="76.8701" cy="23.1299" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="88.0000" cy="50.0000" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="76.8701" cy="76.8701" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="50.0000" cy="88.0000" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="23.1299" cy="76.8701" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="12.0000" cy="50.0000" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="23.1299" cy="23.1299" r="6.5" fill="white" stroke="url(#lm-node)" stroke-width="3"/><circle cx="50" cy="50" r="11" fill="url(#lm-hub)"/></g></svg>GEO Agency <span>Index</span></a>
+<nav class="nav">
+<a href="/" class="">The Index</a>
+<a href="/findings" class="on">Findings</a>
+<a href="/methodology" class="">Methodology</a>
+<a href="/about" class="">About</a>
+<a class="navcta" href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=nav">AI Syndicate &rarr;</a>
+</nav>
+</div></header>
+
+<div class="hero grid-bg"><div class="wrap narrow">
+<div class="kicker">Findings &middot; Measured 14 August 2026</div>
+<h1>What 29 GEO agencies' own websites actually look like</h1>
+<p class="lede">Every claim below is countable from <a href="/data.json">the published dataset</a>. Nothing here is an estimate.</p>
+</div></div>
+
+<section><div class="wrap narrow">
+<h2>01 &middot; One agency in 29 has done the full job on its own site</h2>
+<p>The three AI-readability files &mdash; <code>llms.txt</code>, <code>llms-full.txt</code> and <code>agents.md</code> &mdash; are the plainest signal that a business has thought about being read by a machine. Across 29 agencies that sell exactly that service:</p>
+<ul style="margin:16px 0 16px 22px;color:var(--ink2)">
+<li><b>15 of 29</b> publish a working llms.txt.</li>
+<li><b>1 of 29</b> publish llms-full.txt.</li>
+<li><b>1 of 29</b> publish agents.md.</li>
+<li><b>1 of 29</b> publish all three.</li>
+</ul>
+<p>Average AI-readiness score across the index: <b>29.9 out of 100</b>. Take the publisher out and it falls further.</p>
+
+<h2 style="margin-top:44px">02 &middot; 28 of 29 robots.txt files never mention an AI crawler</h2>
+<p>We searched every robots.txt for eleven names: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Applebot-Extended, Bytespider, Amazonbot. In 28 files, not one of them appears. AI crawlers are left to whatever the catch-all rule happens to say.</p>
+<p>Two details make the point sharper. <b>Thrive</b>'s robots.txt names AhrefsBot and AhrefsSiteAudit &mdash; two SEO tools &mdash; and no AI crawler. <b>Silverback Strategies</b> adds a line reading <code>LLMs: https://www.silverbackstrategies.com/llms.txt</code>, which is not a real directive and which no crawler reads. Apart from the publisher's own file, it is the only robots.txt in the index that tries to address AI at all &mdash; in a language nothing understands.</p>
+
+<h2 style="margin-top:44px">03 &middot; Four sites answer "yes" to a file that isn't there</h2>
+<p>A missing file should return a 404. Four sites instead return a normal HTML page with a success status when asked for one of the AI files:</p>
+<ul style="margin:16px 0 16px 22px;color:var(--ink2)">
+<li><b>Seer Interactive</b> &mdash; <code>/llms.txt</code> returns the homepage.</li>
+<li><b>Omniscient Digital</b> &mdash; <code>/llms-full.txt</code> returns the ordinary web page.</li>
+<li><b>uSERP</b> &mdash; all three files return a styled "we can't find that" page; the llms-full.txt version is served with <code>noindex</code>.</li>
+<li><b>Go Fish Digital</b> &mdash; <code>/agents.md</code> returns a bot-check page that asks for JavaScript. AI crawlers do not run JavaScript. Their <code>/pricing/</code> page does the same thing, though that is a real page behind an interstitial rather than a missing file.</li>
+</ul>
+<p>This is worse than nothing. A client that reads status codes records a success and moves on with a page of navigation links where the answer should be.</p>
+
+<h2 style="margin-top:44px">04 &middot; You cannot buy any of it without talking to somebody</h2>
+<p style="font-size:15px;color:var(--ink-dim)">Measured for all 29 agencies and <a href="/also-measured">not scored in the index</a>.</p>
+<p><b>28 of 29 agencies have no way to start without a sales call.</b> Not a trial, not a plan button, not a checkout. Every path is a form that asks for your phone number and, usually, your budget.</p>
+<p>Several have a button that reads like a purchase and is not. Graphite's says <b>START GROWING</b> and sits at the URL <code>/signup</code> &mdash; it is a lead form asking for a budget range, and their own robots.txt disallows it. BE VISIBLE's says <b>Start Ranking Today</b> and opens a 15-minute call booker. Obility puts <b>Get started</b> on all three published price tiers; all three go to a contact form.</p>
+<p>Two agencies do run real self-serve software &mdash; Omnius through Atomic AGI, and SEOProfy through LinkChecker.PRO &mdash; but on separate domains their agency site does not sell you into. WebFX has its own AI-visibility product with a live client login, and still routes every plan button to “Request a FREE Proposal Now!”.</p>
+
+<h2 style="margin-top:44px">05 &middot; Most of them are selling you somebody else's software</h2>
+<p><b>5 of 29</b> run their own AI-visibility software that a customer can log into. The rest either resell a third-party tool or hand over a document.</p>
+<p>Several say so themselves. NoGood's own page: “we leverage our tech partner, Goodie.” Seer Interactive's: “We partner with Scrunch for AI Search visibility tracking.” BE VISIBLE names OtterlyAI on its homepage. Siege Media is the most direct about it &mdash; BlueprintIQ's page says “rather than a tool you have to log into, it works behind the scenes as part of our service.”</p>
+<p>Others name something that turns out not to be software. Grizzle's Cloudkicker is called a proprietary platform in body text; the page for it 404s. Intero's GRO is “our proprietary GEO framework” &mdash; a methodology. Thrive has four proprietary-sounding brands and the only one with a real login does reputation management, not AI visibility. SEOProfy is the closest miss in the index: two genuine login-backed products it built itself, neither of which tracks AI visibility.</p>
+
+<h2 style="margin-top:44px">06 &middot; Almost everyone tells you which engines they cover</h2>
+<p><b>27 of 29</b> name at least three specific AI engines on a public page. This is the one check nearly everybody passes, and it is in the index at low weight for exactly that reason.</p>
+<p>The two that fail are worth the detail. <b>Siege Media</b> names one engine, once, in a case-study line. <b>Go Fish Digital</b> may well name a dozen &mdash; but every page we requested, including the homepage, the services page and their own free AI visibility audit, returned “Javascript is required” to an automated client. An AI crawler gets that same page. On a site selling AI visibility, that is the finding.</p>
+
+<h2 style="margin-top:44px">07 &middot; The industry ranks itself</h2>
+<p>Nine of the agencies in this index publish their own "best GEO agency" round-up, and each of those round-ups includes its own publisher. Here they are, so you can check rather than take our word for it:
+<a href="https://seoprofy.com/blog/generative-engine-optimization-agencies/" rel="nofollow noopener">SEOProfy</a>,
+<a href="https://minuttia.com/best-geo-agencies/" rel="nofollow noopener">Minuttia</a>,
+<a href="https://www.omnius.so/blog/best-geo-agencies" rel="nofollow noopener">Omnius</a>,
+<a href="https://nogood.io/blog/best-answer-engine-optimization-agencies" rel="nofollow noopener">NoGood</a>,
+<a href="https://www.siegemedia.com/strategy/best-generative-engine-optimization-agencies" rel="nofollow noopener">Siege Media</a>,
+<a href="https://thriveagency.com/news/top-generative-engine-optimization-geo-agencies/" rel="nofollow noopener">Thrive</a>,
+<a href="https://grizzle.io/blog/best-generative-engine-optimization-agencies-for-b2b" rel="nofollow noopener">Grizzle</a>,
+<a href="https://www.silverbackstrategies.com/lists/best-geo-agencies-generative-engine-optimization-in-2026-ranked-reviewed/" rel="nofollow noopener">Silverback Strategies</a> and
+<a href="https://firstpagesage.com/seo-blog/the-top-answer-engine-optimization-aeo-companies/" rel="nofollow noopener">First Page Sage</a>.
+That is the normal state of this category. This index is the tenth such list, so it does two things the others do not: it names its publisher on every page, and it publishes the raw dataset and a sensitivity test so the scoring can be checked rather than trusted.</p>
+<p>The publisher of this index, AI Syndicate, is ranked first here. So: 3 of the 7 checks are passed by AI Syndicate and nobody else, worth 30 of 100 points. <b>Delete all 3 and rescore, and it is still first</b> &mdash; that test is published in full on the <a href="/methodology">methodology page</a>. Five further checks were measured and left out of the score, and AI Syndicate does badly on three of them; they are published at <a href="/also-measured">Also measured</a> rather than buried.</p>
+</div></section>
+
+<section class="alt"><div class="wrap narrow">
+<h2>Sources for the outside research quoted here</h2>
+<p style="font-size:15.5px;color:var(--ink2)">Four outside studies are referred to on this site. Each is described here as it actually reads, not as it is usually paraphrased.</p>
+<ul style="margin:14px 0 0 22px;color:var(--ink2);font-size:15.5px">
+<li><b>Aggarwal et al., <em>GEO: Generative Engine Optimization</em>, KDD 2024</b> (arXiv 2311.09735). Found that adding citations, quotations and statistics to a page lifted its visibility in generative engine answers by up to 40%. This is the one peer-reviewed causal result in the field.</li>
+<li><b>Pew Research Center, 22 July 2025</b> (68,879 Google searches from a 900-person panel). Found that people click a search result on 8% of visits where an AI summary appears, against 15% where it does not. <b>It is a study of clicking, not of citation.</b> It does not say what makes an AI cite a source, and it is not quoted here as if it did.</li>
+<li><b>Ahrefs, <em>Top Brand Visibility Factors</em>, 12 December 2025</b> (75,000 brands). Correlations only, and only for the factors it measured: YouTube mentions ~0.74, branded web mentions ~0.66, Domain Rating ~0.27. On-site markup was not one of the variables.</li>
+<li><b>Ahrefs, <em>97% of llms.txt Files Never Get Read</em>, 15 June 2026</b> (137,210 domains). 28% of domains published a valid llms.txt; 97% of those files got no requests in May 2026.</li>
+</ul>
+<p style="font-size:15.5px;color:var(--ink2);margin-top:14px">Everything measured on this site is ours, and is dated 14 August 2026.</p>
+</div></section>
+
+<section><div class="wrap narrow"><div class="cta">
+<h2>Get your own site checked</h2>
+<p>AI Syndicate runs these seven checks, plus a deeper audit, and ships the fixes to the live site. Published prices, no call required.</p>
+<a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=findings-cta" class="btn" >See AI Syndicate &rarr;</a>
+</div></div></section>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><strong style="color:var(--ink)">The GEO Agency Index</strong><br>Measured 14 August 2026. Method version 1.0.</div>
+<div><a href="/methodology">Methodology</a> &middot; <a href="/also-measured">Also measured</a> &middot; <a href="/data.json">Raw data (JSON)</a> &middot; <a href="/findings">Findings</a> &middot; <a href="/about">About</a></div>
+<div><a href="/llms.txt">llms.txt</a> &middot; <a href="/llms-full.txt">llms-full.txt</a> &middot; <a href="/agents.md">agents.md</a> &middot; <a href="/feed.xml">RSS</a></div>
+</div>
+<div class="fdisc"><b>Who publishes this.</b> The GEO Agency Index is published by <a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=footer-disclosure" class="" >AI Syndicate</a>, a generative engine optimization agency that appears in this index at rank 1. We score ourselves under the same rules as everyone else, lose 25 of 40 transparency points for it, and publish a rescore that deletes every check only we pass &mdash; it drops us to rank 1. Nothing on this page is a paid placement; no agency paid to be included, excluded, or moved. Every score is a public file or a public page, named and dated, so you can check any of it in a browser in about a minute. If we have a fact wrong, we will correct it and log the correction.</div>
+</div></footer>
+</body></html>
