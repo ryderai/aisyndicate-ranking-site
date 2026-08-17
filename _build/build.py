@@ -22,6 +22,22 @@ CRIT = {c["key"]: c for c in DATA["criteria"]}
 AI_KEYS = [c["key"] for c in DATA["criteria"] if c["group"] == "ai"]      # scored — this is the index
 ALSO_KEYS = [c["key"] for c in DATA["criteria"] if c["group"] == "also"]  # measured, published, not scored
 TRUST_KEYS = ALSO_KEYS
+# Checks that are scored but NOT shown as a column on the front table. Andrew, 17 Aug 2026:
+# llms-full.txt is a tactic we would rather not hand to 29 competitors in a scoreboard.
+# It still counts for its points, still appears on every agency profile and in the method.
+# Sales blocks. Andrew/Ryder, 17 Aug 2026: the index should not carry an advert for the agency
+# that publishes it. False removes the pitch block from the index, findings, about and the 28
+# competitor profiles. It does NOT touch the disclosure strip, the footer line, or the
+# "Yes, we ranked ourselves first" block on our own profile — that one is the rigging defence,
+# not a pitch. Set it back to True to restore all four in one edit.
+PITCH_BLOCKS = False
+
+HIDDEN_COLUMNS = ["llms_full"]
+TABLE_KEYS = [k for k in AI_KEYS if k not in HIDDEN_COLUMNS]
+COL_HEAD = {"llms_txt": "llms<br>.txt", "own_platform": "Own<br>platform",
+            "engines_named": "Engines<br>named", "robots_ai": "AI in<br>robots",
+            "machine_pricing": "Machine<br>price", "llms_full": "llms-full<br>.txt",
+            "agents_md": "agents<br>.md"}
 AI_MAX = sum(CRIT[k]["points"] for k in AI_KEYS)
 TRUST_MAX = sum(CRIT[k]["points"] for k in ALSO_KEYS)
 
@@ -435,7 +451,7 @@ def foot():
 <div><a href="/methodology">Methodology</a> &middot; <a href="/also-measured">Also measured</a> &middot; <a href="/data.json">Raw data (JSON)</a> &middot; <a href="/findings">Findings</a> &middot; <a href="/about">About</a></div>
 <div><a href="/llms.txt">llms.txt</a> &middot; <a href="/llms-full.txt">llms-full.txt</a> &middot; <a href="/agents.md">agents.md</a> &middot; <a href="/feed.xml">RSS</a></div>
 </div>
-<div class="fdisc"><b>Who publishes this.</b> {BRAND} is published by {ref('footer-disclosure', PUB)}, a generative engine optimization agency that appears in this index at rank 1. We score ourselves under the same rules as everyone else, lose {PUB_LOST} of {TRUST_MAX} transparency points for it, and publish a rescore that deletes every check only we pass &mdash; it drops us to rank {PUB_SENS[0]}. Nothing on this page is a paid placement; no agency paid to be included, excluded, or moved. Every score is a public file or a public page, named and dated, so you can check any of it in a browser in about a minute. If we have a fact wrong, we will correct it and log the correction.</div>
+<div class="fdisc">Published by {ref('footer-disclosure', PUB)}, which is ranked in this index. No agency paid to be included, excluded or moved. <a href="/about">How the conflict is handled</a> &middot; <a href="/methodology">how every score was measured</a>.</div>
 </div></footer>
 </body></html>"""
 
@@ -492,14 +508,23 @@ def build_index():
     for a in AG:
         me = ' class="me"' if a.get("is_publisher") else ""
         eq = '<span class="eq">=</span>' if a["tied"] else ""
-        tag = '<span class="tag">Publisher</span>' if a.get("is_publisher") else ""
-        cells = "".join(cell(a["scores"][k]) for k in AI_KEYS)
+        tag = ""  # the Publisher badge was taken off the row on 17 Aug 2026
+        cells = "".join(cell(a["scores"][k]) for k in TABLE_KEYS)
         rows.append(f"""<tr{me}>
 <td class="rk">{a['rank']}{eq}</td>
 <td><a href="/agency/{a['slug']}" class="ag">{html.escape(a['name'])}{tag}</a><span class="dm">{a['domain']}</span></td>
 {cells}
 <td class="c"><span class="sc">{a['total']}</span><div class="bar"><i style="width:{a['total']}%"></i></div></td>
 </tr>""")
+
+    pitch_index = f"""<section><div class="wrap">
+<div class="cta">
+<h2>This index was built by an agency that does this work</h2>
+<p>{PUB} publishes the index and is ranked in it. If you want the same seven checks run on your own site &mdash; and the fixes actually shipped &mdash; that is the job we do. Prices are on the site, no call required.</p>
+{ref('cta-primary', 'See AI Syndicate &rarr;', 'btn')}
+<a href="/methodology" class="btn ghost">Run the checks yourself</a>
+</div>
+</div></section>""" if PITCH_BLOCKS else ""
 
     body = f"""
 <div class="hero"><div class="wrap">
@@ -522,13 +547,12 @@ def build_index():
 <div class="tw"><table>
 <thead><tr>
 <th>#</th><th>Agency</th>
-<th class="c">llms<br>.txt</th><th class="c">Own<br>platform</th><th class="c">Engines<br>named</th><th class="c">AI in<br>robots</th>
-<th class="c">Machine<br>price</th><th class="c">llms-full<br>.txt</th><th class="c">agents<br>.md</th>
-<th class="c">Score<br>/100</th>
+{"".join(f'<th class="c">{COL_HEAD[k]}</th>' for k in TABLE_KEYS)}
+<th class="c">Score<br>/{AI_MAX}</th>
 </tr></thead>
 <tbody>{''.join(rows)}</tbody>
 </table></div>
-<div class="legend"><span><span class="y">&#10003;</span> the check passed</span><span><span class="n">&#8212;</span> the check did not pass</span><span>Seven checks, {AI_MAX} points.</span><span><a href="/methodology">What each column means &rarr;</a></span><span><a href="/also-measured">Five more things we measured but did not score &rarr;</a></span></div>
+<div class="legend"><span><span class="y">&#10003;</span> the check passed</span><span><span class="n">&#8212;</span> the check did not pass</span><span>{len(AI_KEYS)} checks, {AI_MAX} points &mdash; {len(TABLE_KEYS)} of them shown here.</span><span><a href="/methodology">Every check, and what each column means &rarr;</a></span><span><a href="/also-measured">Five more things we measured but did not score &rarr;</a></span></div>
 </div></section>
 
 <section class="alt"><div class="wrap">
@@ -546,14 +570,7 @@ def build_index():
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="cta">
-<h2>This index was built by an agency that does this work</h2>
-<p>{PUB} publishes the index and is ranked in it. If you want the same seven checks run on your own site &mdash; and the fixes actually shipped &mdash; that is the job we do. Prices are on the site, no call required.</p>
-{ref('cta-primary', 'See AI Syndicate &rarr;', 'btn')}
-<a href="/methodology" class="btn ghost">Run the checks yourself</a>
-</div>
-</div></section>
+{pitch_index}
 """
     return head(f"{BRAND} {DATA['edition']} — {N} GEO agencies, scored on public evidence",
                 f"{N} agencies that sell AI search visibility, audited on {MEASURED_LONG}. Only {F['all3']} of {N} publish all three AI-readability files on its own site. {F['robots']} of {N} name an AI crawler in robots.txt.",
@@ -596,7 +613,7 @@ def build_profile(a):
 <p>So apply the obvious test. {len(SOLE)} of the {len(AI_KEYS)} checks, worth {SOLE_PTS} of {AI_MAX} points, are passed by this agency and nobody else. <b>Delete all {len(SOLE)} and rescore everyone: {PUB} is still first, on {PUB_SENS[1]} of {SENS_MAX}, ahead of the next {len(SENS_RUNNER_NAMES)} on {SENS_RUNNER}.</b> The full rescore is published on the methodology page &mdash; run it before you take our word for anything. Five further things were measured and deliberately left out of the score; we do badly on three of them, and they are published in full at <a href="/also-measured" style="color:#fff;text-decoration:underline">Also measured</a>.</p>
 {ref('profile-cta-publisher', 'Go to aisyndicate.com &rarr;', 'btn')}
 <a href="/methodology" class="btn ghost">Check our score yourself</a></div>"""
-    else:
+    elif PITCH_BLOCKS:
         pubcta = f"""<div class="cta" style="margin-top:34px">
 <h2>Want these seven checks run on your site?</h2>
 <p>{PUB} publishes this index and does this work for clients &mdash; the audit, and then the fixes shipped to the live site. Prices are published, no call required.</p>
@@ -765,8 +782,6 @@ curl -s "https://$D/robots.txt" | grep -iE \\
 </div>
 </div></section>
 
-</div></section>
-
 <section class="alt"><div class="wrap narrow">
 <h2>What this index does not measure</h2>
 <p>Plainly: <b>this is not a measure of whether an agency is good at its job.</b> It measures whether the public evidence a buyer can check lines up with what the agency sells. Those are different things, and an agency can score badly here and still do excellent work.</p>
@@ -797,6 +812,12 @@ curl -s "https://$D/robots.txt" | grep -iE \\
 
 # ---------------------------------------------------------------- findings
 def build_findings():
+    pitch_findings = f"""
+<section><div class="wrap narrow"><div class="cta">
+<h2>Get your own site checked</h2>
+<p>{PUB} runs these seven checks, plus a deeper audit, and ships the fixes to the live site. Published prices, no call required.</p>
+{ref('findings-cta', 'See AI Syndicate &rarr;', 'btn')}
+</div></div></section>""" if PITCH_BLOCKS else ""
     soft = [a["name"] for a in AG if "HTML" in json.dumps(a["evidence"]) and not a["scores"]["llms_txt"]]
     body = f"""
 <div class="hero"><div class="wrap narrow">
@@ -871,12 +892,7 @@ That is the normal state of this category. This index is the tenth such list, so
 </ul>
 <p style="font-size:15.5px;color:var(--ink2);margin-top:14px">Everything measured on this site is ours, and is dated {MEASURED_LONG}.</p>
 </div></section>
-
-<section><div class="wrap narrow"><div class="cta">
-<h2>Get your own site checked</h2>
-<p>{PUB} runs these seven checks, plus a deeper audit, and ships the fixes to the live site. Published prices, no call required.</p>
-{ref('findings-cta', 'See AI Syndicate &rarr;', 'btn')}
-</div></div></section>
+{pitch_findings}
 """
     ld = json.dumps({"@context":"https://schema.org","@type":"Article",
         "@id":SITE_URL+"/findings#a","headline":f"What {N} GEO agencies' own websites actually look like",
@@ -898,6 +914,13 @@ That is the normal state of this category. This index is the tenth such list, so
 
 # ---------------------------------------------------------------- about
 def build_about():
+    pitch_about = f"""
+<section class="alt"><div class="wrap narrow"><div class="cta">
+<h2>{PUB}</h2>
+<p>A generative engine optimization agency: getting businesses found, trusted and quoted by AI search. Published prices, a self-serve tier, and the same {len(AI_KEYS)} checks run on your site.</p>
+{ref('about-cta', 'Visit aisyndicate.com &rarr;', 'btn')}
+</div></div></section>""" if PITCH_BLOCKS else ""
+
     body = f"""
 <div class="hero"><div class="wrap narrow">
 <div class="kicker">About</div>
@@ -931,11 +954,7 @@ def build_about():
 <p>Corrections, additions and disputes go to <a href="{PUB_URL}?{UTM}about-contact" >{PUB}</a>. Send the URL and what it should say. If you are right, the index changes and the correction gets logged.</p>
 </div></section>
 
-<section class="alt"><div class="wrap narrow"><div class="cta">
-<h2>{PUB}</h2>
-<p>A generative engine optimization agency: getting businesses found, trusted and quoted by AI search. Published prices, a self-serve tier, and the same {len(AI_KEYS)} checks run on your site.</p>
-{ref('about-cta', 'Visit aisyndicate.com &rarr;', 'btn')}
-</div></div></section>
+{pitch_about}
 """
     ld = json.dumps({"@context":"https://schema.org","@type":"AboutPage",
         "@id":SITE_URL+"/about#a","name":f"About and disclosure — {BRAND}",

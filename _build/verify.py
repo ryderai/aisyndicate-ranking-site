@@ -282,7 +282,12 @@ def main():
         structural = [
             ("also-measured page lists every agency", all(a["name"] in also for a in data["agencies"])),
             ("also-measured states the publisher's own weak result", "scores" in also and "AI Syndicate" in also),
-            ("index table column count matches the scored checks", home.count('<th class="c">') == len(ai_keys) + 1),
+            # llms-full.txt is scored but deliberately not a column on the front table (17 Aug 2026).
+            # These two together stop it being quietly dropped from the score by accident.
+            ("index table shows every scored check except the hidden ones",
+             home.count('<th class="c">') == len(ai_keys) - 1 + 1),
+            ("the hidden check still carries its points and still appears on the profiles",
+             crit["llms_full"]["points"] > 0 and "llms-full.txt published" in get("/agency/ai-syndicate")[1]),
             ("buy-no-call column is gone from the index", "Buy, no" not in home),
             ("self_serve is not a scored check", "self_serve" not in [c["key"] for c in data["criteria"] if c["group"] == "ai"]),
             ("self_serve is still published as measured", "self_serve" in [c["key"] for c in data["criteria"] if c["group"] == "also"]),
