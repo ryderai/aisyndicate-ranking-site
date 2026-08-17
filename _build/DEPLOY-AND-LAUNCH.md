@@ -145,3 +145,16 @@ computed from `data.json`. Nothing is typed twice, so nothing can disagree with 
 - a missing publisher disclosure on any page
 - a dofollow link to a competitor, or an untagged link to aisyndicate.com
 - any of the 15 defects the fact-check found on the first build
+
+---
+
+## Note added 17 August 2026 — fonts are now part of the deploy
+
+The site no longer loads fonts from Google. Three families are served from **`/fonts`**
+(8 woff2 files, 228 KB total). When you copy this folder into the repo, **copy `fonts/` too**
+or every page falls back to Times.
+
+The look was rebuilt the same day: paper-and-ink research-report style, no gradients, no pill
+buttons, no shared tokens with aisyndicate.com, and the permanent "AI Syndicate" button is gone
+from the navigation. The publisher disclosure strip stays on every page — `verify.py` fails the
+build without it. Full notes in `README.md` under "House style".
