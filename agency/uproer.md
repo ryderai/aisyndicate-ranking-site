@@ -1,21 +1,20 @@
-# Uproer — 36/100
+# Uproer — 39/100
 
 Rank 7 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at uproer.com on 14 August 2026.
 
 **SEO, paid search and GEO/AEO for ecommerce and national brands.**
 
-- Index score: 36 of 100
+- Index score: 39 of 100
 - Also measured, not scored: 25 of 40
 
 ## The index (scored)
 
-- **PASS — llms.txt published** (22 pts). Plain text agency overview — founded 2017, Saint Paul MN, services, typical client size.
-- **FAIL — Runs its own tracking software** (20 pts). No proprietary software anywhere. Their trademarked asset, North Star Search Strategy, is a one-month consulting project, and their own llms.txt links an article about which third-party AI reporting tools they use.
-- **PASS — Names the AI engines it covers** (14 pts). The GEO page names ChatGPT, Perplexity, Gemini and Bing Copilot.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Minimal WordPress with Crawl-delay: 10. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). Their llms.txt is a genuinely good file, but its only dollar figure describes the client size they want, not what they charge. Their retainers are HTML only.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **PASS — llms.txt published** (24 pts). Plain text agency overview — founded 2017, Saint Paul MN, services, typical client size.
+- **FAIL — Runs its own tracking software** (22 pts). No proprietary software anywhere. Their trademarked asset, North Star Search Strategy, is a one-month consulting project, and their own llms.txt links an article about which third-party AI reporting tools they use.
+- **PASS — Names the AI engines it covers** (15 pts). The GEO page names ChatGPT, Perplexity, Gemini and Bing Copilot.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Minimal WordPress with Crawl-delay: 10. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). Their llms.txt is a genuinely good file, but its only dollar figure describes the client size they want, not what they charge. Their retainers are HTML only.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

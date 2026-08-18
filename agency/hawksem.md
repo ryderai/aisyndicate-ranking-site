@@ -1,21 +1,20 @@
-# HawkSEM — 14/100
+# HawkSEM — 15/100
 
 Rank 16 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at hawksem.com on 14 August 2026.
 
 **Search marketing with a GEO and AI search service.**
 
-- Index score: 14 of 100
+- Index score: 15 of 100
 - Also measured, not scored: 25 of 40
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404.
-- **FAIL — Runs its own tracking software** (20 pts). ConversionIQ has its own product page and is pitched as a client dashboard, but no login or signup exists anywhere on the site — the product page's only button is "TALK TO AN EXPERT" — and it tracks ad conversions, not AI visibility.
-- **PASS — Names the AI engines it covers** (14 pts). The GEO services page names ChatGPT, AI Overviews, Claude, Gemini, Copilot and Perplexity.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Minimal Yoast block, allow-all, Crawl-delay: 10. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). /llms.txt, /llms-full.txt and /agents.md all 404. Their $1,550 to $10,000+/month figures are HTML only.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **FAIL — llms.txt published** (24 pts). 404.
+- **FAIL — Runs its own tracking software** (22 pts). ConversionIQ has its own product page and is pitched as a client dashboard, but no login or signup exists anywhere on the site — the product page's only button is "TALK TO AN EXPERT" — and it tracks ad conversions, not AI visibility.
+- **PASS — Names the AI engines it covers** (15 pts). The GEO services page names ChatGPT, AI Overviews, Claude, Gemini, Copilot and Perplexity.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Minimal Yoast block, allow-all, Crawl-delay: 10. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). /llms.txt and /agents.md both 404. Their $1,550 to $10,000+/month figures are HTML only.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

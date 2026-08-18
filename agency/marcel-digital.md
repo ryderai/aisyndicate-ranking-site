@@ -1,21 +1,20 @@
-# Marcel Digital — 14/100
+# Marcel Digital — 15/100
 
 Rank 16 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at marceldigital.com on 14 August 2026.
 
 **Answer engine optimization with a focus on structured data.**
 
-- Index score: 14 of 100
+- Index score: 15 of 100
 - Also measured, not scored: 25 of 40
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404 on both the apex and www hosts.
-- **FAIL — Runs its own tracking software** (20 pts). Only third-party platforms are named across the site — Umbraco, HubSpot, Google Analytics. No proprietary product, login or client dashboard.
-- **PASS — Names the AI engines it covers** (14 pts). The AEO page names Google AI Overviews, Gemini, ChatGPT, Perplexity and Copilot, plus Siri and Alexa in the FAQs.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Three lines. Blocks one admin path. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). /llms.txt, /llms-full.txt and /agents.md all 404.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **FAIL — llms.txt published** (24 pts). 404 on both the apex and www hosts.
+- **FAIL — Runs its own tracking software** (22 pts). Only third-party platforms are named across the site — Umbraco, HubSpot, Google Analytics. No proprietary product, login or client dashboard.
+- **PASS — Names the AI engines it covers** (15 pts). The AEO page names Google AI Overviews, Gemini, ChatGPT, Perplexity and Copilot, plus Siri and Alexa in the FAQs.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Three lines. Blocks one admin path. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). /llms.txt and /agents.md both 404.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

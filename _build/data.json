@@ -9,7 +9,7 @@
     {
       "key": "llms_txt",
       "group": "ai",
-      "points": 22,
+      "points": 24,
       "label": "llms.txt published",
       "what": "A plain-text file at /llms.txt that lists the site's important pages for AI assistants.",
       "how": "Request https://DOMAIN/llms.txt. Counts only if the response is real plain text. A page of HTML, a redirect to the homepage, or a 404 does not count."
@@ -17,7 +17,7 @@
     {
       "key": "own_platform",
       "group": "ai",
-      "points": 20,
+      "points": 22,
       "label": "Runs its own tracking software",
       "what": "The agency operates its own named software for tracking AI visibility, that a client can log into — rather than reselling somebody else's tool or sending a PDF.",
       "how": "Look for a named product with its own product page AND a working customer login or signup. Naming a third-party tool (Semrush, Ahrefs, Profound, Peec, Otterly, Scrunch) does not count. An internal \"framework\" or \"methodology\" the agency's own team runs does not count — the client has to be able to log in."
@@ -25,7 +25,7 @@
     {
       "key": "engines_named",
       "group": "ai",
-      "points": 14,
+      "points": 15,
       "label": "Names the AI engines it covers",
       "what": "A public page names at least three specific AI engines the agency works on, so a buyer knows what they are paying for.",
       "how": "Look for at least three of: ChatGPT, Perplexity, Gemini, Google AI Overviews, Google AI Mode, Copilot, Claude, Grok, Meta AI, DeepSeek, Mistral, Alexa, Siri. Saying \"AI search engines\" or \"LLMs\" in general does not count. If a site's bot protection stops an automated client reading the page, it does not count — an AI cannot read it either."
@@ -33,7 +33,7 @@
     {
       "key": "robots_ai",
       "group": "ai",
-      "points": 14,
+      "points": 15,
       "label": "robots.txt names AI crawlers",
       "what": "The robots.txt file names AI crawlers by name and says what they may do, instead of leaving them to a catch-all rule.",
       "how": "Read https://DOMAIN/robots.txt and look for any of: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Applebot-Extended, Bytespider, Amazonbot. Full points only if at least one is named and none of the eleven is denied site-wide access. A rule blocking a single path, such as an API directory, is not site-wide denial."
@@ -41,23 +41,15 @@
     {
       "key": "machine_pricing",
       "group": "ai",
-      "points": 14,
+      "points": 15,
       "label": "Price readable by a machine",
       "what": "A real price for the agency's own work sits inside a plain-text file an AI can read, not only inside a web page.",
-      "how": "Look for a dollar figure for their own service inside /llms.txt, /llms-full.txt or /agents.md on their own domain. A price on an HTML page only does not count — that is the whole point of the check."
-    },
-    {
-      "key": "llms_full",
-      "group": "ai",
-      "points": 8,
-      "label": "llms-full.txt published",
-      "what": "The long version of llms.txt: the site's actual content in one text file, so an AI can read it without crawling.",
-      "how": "Request https://DOMAIN/llms-full.txt. Same rule: plain text only."
+      "how": "Look for a dollar figure for their own service inside /llms.txt or /agents.md on their own domain. A price on an HTML page only does not count — that is the whole point of the check."
     },
     {
       "key": "agents_md",
       "group": "ai",
-      "points": 8,
+      "points": 9,
       "label": "agents.md published",
       "what": "A file that tells AI agents who the business is and what it is allowed to be quoted on.",
       "how": "Request https://DOMAIN/agents.md. Same rule: plain text only."
@@ -112,7 +104,6 @@
       "sells": "Generative Engine Optimization — done-for-you agency work plus its own AI visibility tracking platform.",
       "scores": {
         "llms_txt": true,
-        "llms_full": true,
         "agents_md": true,
         "robots_ai": true,
         "pricing": true,
@@ -126,7 +117,6 @@
       },
       "evidence": {
         "llms_txt": "/llms.txt returns plain text, 23,989 bytes, opening \"# AI Syndicate\".",
-        "llms_full": "/llms-full.txt returns plain text, 1,092,745 bytes.",
         "agents_md": "/agents.md returns plain text, 11,134 bytes, including entity disambiguation against aisyndicate.io.",
         "robots_ai": "robots.txt names all eleven audited AI crawlers and gives each \"Allow: /\". The only Disallow anywhere in the file is /api/.",
         "pricing": "Six tiers on /pricing/: AI Pulse $499/mo, AI Radar $899/mo, AI Radar Pro $6,500/mo, AI Territory Standard $2,500/mo, AI Territory Pro $8,500/mo, AI Command from $25,000. The page also states no product carries a separate setup or build fee.",
@@ -135,7 +125,7 @@
         "numbers": "The only figure offered is \"312% increase in AI citations\", labelled on the page as early, client-reported and anonymised. Homepage figures are labelled a representative scenario.",
         "engines_named": "The homepage and /features/ name twelve: ChatGPT, Claude, Google AI Overviews, Gemini, Perplexity, Copilot, Meta AI, Grok, DeepSeek, Mistral, Alexa+ and Siri.",
         "own_platform": "Six named products — AI Pulse, AI Radar, Radar Pro, AI Territory, Territory Pro and AI Command — each with its own page under /products/, and a customer login at /#/signin.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all carry the prices verbatim, including \"AI Pulse: $499/month\" and \"AI Command: from $25,000\".",
+        "machine_pricing": "/llms.txt and /agents.md both carry the prices verbatim, including \"AI Pulse: $499/month\" and \"AI Command: from $25,000\".",
         "self_serve": "\"Start 7-day free trial\" and \"Buy now\" on /pricing/ both go to account creation at /#/signin?plan=..., and /#/signup creates an account directly. No call, no form."
       },
       "note": "This index is published by AI Syndicate. It scores itself under the same rules as everyone else and loses 25 of 40 transparency points as a result.",
@@ -148,7 +138,6 @@
       "sells": "Full-service digital marketing. Sells generative engine and LLM SEO under its OmniSEO framework.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -162,7 +151,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text, self-describes as highlighting the most useful pages for LLMs.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "None of the eleven AI crawler names appears in robots.txt.",
         "pricing": "Published rate card on /pricing/: SEO from $3,000/mo; Silver $5,900 then $2,900/mo; Gold $9,150 then $6,150/mo; Platinum $10,400 then $7,400/mo; Diamond $12,200 then $9,200/mo.",
@@ -184,7 +172,6 @@
       "sells": "B2B and SaaS SEO with a GEO programme aimed at becoming the answer AI search gives.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -198,7 +185,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text, hand-written rather than plugin-generated.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "None of the eleven names appears in robots.txt. The file is fully permissive.",
         "pricing": "Six published tiers on /pricing/: Foundation $3,000, Growth $5,000, Accelerate $7,000, Scale $10,000, Command $12,000, Total Market $15,000 per month.",
@@ -220,7 +206,6 @@
       "sells": "Organic growth for B2B software, including a GEO service for appearing in AI search and LLM output.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -234,7 +219,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text, generated by Yoast SEO 28.1.",
-        "llms_full": "Returns the site's HTML page, not plain text. Scored as absent.",
         "agents_md": "404.",
         "robots_ai": "WordPress default. None of the eleven names appears. No sitemap directive either.",
         "pricing": "\"Full-service engagements start at $10,000 a month\" on the homepage.",
@@ -243,10 +227,9 @@
         "numbers": "Jasper: \"grew organic sessions 810% and product signups 400X\".",
         "engines_named": "The GEO service page names ChatGPT, Claude, Gemini and Perplexity.",
         "own_platform": "No product name, product page or client dashboard anywhere. Their own blog points readers at a third-party tool.",
-        "machine_pricing": "llms.txt contains no dollar figure at all; /llms-full.txt serves ordinary HTML.",
+        "machine_pricing": "llms.txt contains no dollar figure at all.",
         "self_serve": "\"Get a free strategy call\", \"Book Strategy Call\" and \"Get a GEO Analysis\" all lead to an application form."
       },
-      "note": "/llms-full.txt returns the ordinary web page instead of 404. An AI client asking for the file gets HTML dressed as an answer.",
       "sitemap_note": "/sitemap.xml is a valid Yoast index."
     },
     {
@@ -256,7 +239,6 @@
       "sells": "Content strategy across Google and generative AI engines.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -270,7 +252,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text, and unusually good — written for AI assistants rather than generated from a page list.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "None of the eleven names appears. The only Disallow rules block Googlebot and AdsBot-Google from /ai/.",
         "pricing": "\"Typical Minimum Engagement (directory listings): $5,000+\" — published in /llms.txt. No dollar figure appears on any HTML page; /pricing/ is a 404. It scores under the rule that any public URL on their own domain counts.",
@@ -292,7 +273,6 @@
       "sells": "AI-native growth marketing, with answer engine optimization for ChatGPT, Gemini and Perplexity.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -306,7 +286,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text index of services, case studies and blog.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Stock WordPress and Yoast. None of the eleven names appears.",
         "pricing": "\"Our average retainer is above $20,000/month\" on the homepage. A stated floor, not a rate card, but a public figure.",
@@ -328,7 +307,6 @@
       "sells": "B2B marketing with a named GEO service covering ChatGPT, Perplexity, Claude, AI Overviews and Reddit.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -342,7 +320,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "None of the eleven names appears. The file has two stacked \"User-agent: *\" groups, which is malformed.",
         "pricing": "Published tiers on /pricing/: Guide $1,850+, Summit $5,450+, Ascent $6,500. Add-ons: content $1,500+, Reddit visibility $2,500+, dashboards $5,000+.",
@@ -364,7 +341,6 @@
       "sells": "Digital PR and link building aimed at the publications AI engines cite.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -378,7 +354,6 @@
       },
       "evidence": {
         "llms_txt": "Returns the WordPress \"can't find what you're looking for\" HTML page.",
-        "llms_full": "Returns a full HTML document carrying \"noindex, follow\".",
         "agents_md": "Same HTML page.",
         "robots_ai": "Minimal, allow-all. None of the eleven names appears.",
         "pricing": "Published on /pricing/: Launch $5,500/mo, Accelerate $10,000/mo, Dominate $15,000/mo.",
@@ -390,7 +365,7 @@
         "machine_pricing": "All three machine-readable paths return the site's HTML 404 page. Their $10,000–$25,000/month tiers are HTML only.",
         "self_serve": "\"Work With Us\", \"Book Intro Call\" and \"Request AEO Pricing\" all point to /start/."
       },
-      "note": "All three AI files return a styled HTML error page rather than a 404. To an AI client that reads status codes, a missing file looks like a successful answer.",
+      "note": "Both AI files return a styled HTML error page rather than a 404. To an AI client that reads status codes, a missing file looks like a successful answer.",
       "sitemap_note": "Yoast index with seven child sitemaps."
     },
     {
@@ -400,7 +375,6 @@
       "sells": "SEO programmes with GEO built in.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -414,7 +388,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "None of the eleven names appears. Blocks query-string URLs, */utils.js and PDFs for all agents.",
         "pricing": "\"SEO services at SeoProfy start from $1,600 per month\" on the homepage.",
@@ -436,7 +409,6 @@
       "sells": "AI search optimization plus PR and performance media.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -450,7 +422,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text at the canonical path, Rank Math generated. The cleanest llms.txt implementation in this index after the publisher's.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "WordPress default. None of the eleven names appears.",
         "pricing": "No figure published. Dollar and percentage figures on site are client results.",
@@ -472,7 +443,6 @@
       "sells": "Brand and entity engineering — Knowledge Panels, brand search results, AI visibility audits.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -486,7 +456,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text entity index, regenerated 2026-08-14.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "WordPress default, only /wp-admin/ disallowed. None of the eleven names appears.",
         "pricing": "/pricing/ is a 404. No figure published.",
@@ -495,7 +464,7 @@
         "numbers": "Merci Facteur: organic traffic up 33%.",
         "engines_named": "Kalicube Pro names ChatGPT, Gemini, Claude, Grok, Perplexity, You.com and Bing. Worth noting the list lives on kalicube.pro — kalicube.com's own pages name only ChatGPT.",
         "own_platform": "Kalicube Pro, with a real product page and a working customer login reading \"Login to your Kalicube Pro account\".",
-        "machine_pricing": "Their llms.txt is an entity index with no pricing; /llms-full.txt and /agents.md 404. There is no pricing page.",
+        "machine_pricing": "Their llms.txt is an entity index with no pricing; /agents.md 404s. There is no pricing page.",
         "self_serve": "The only path is \"Get Free AI Audit\", and the Kalicube Pro login page has no signup or create-account link at all."
       },
       "note": "",
@@ -508,7 +477,6 @@
       "sells": "Performance marketing positioned on visibility in AI-driven discovery.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -522,7 +490,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text with a markdown link index.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Allow-all, plus a non-standard \"LLMs:\" line pointing at their llms.txt. None of the eleven crawler names appears.",
         "pricing": "/pricing/ is a 404. No figure published.",
@@ -531,7 +498,7 @@
         "numbers": "JHU Education: cost per enquiry cut by up to 83%.",
         "engines_named": "The AI Search page names ChatGPT, Perplexity and Google AI Overviews — on exactly one buried page, and on no other page of the site.",
         "own_platform": "No proprietary product is named anywhere and no login or dashboard exists on the site.",
-        "machine_pricing": "Their llms.txt carries service descriptions and navigation but no dollar figure; /llms-full.txt and /agents.md 404.",
+        "machine_pricing": "Their llms.txt carries service descriptions and navigation but no dollar figure; /agents.md 404s.",
         "self_serve": "\"Work with Us\", \"See if We're Right For You\" and \"Let's Go\" all funnel to /contact/. There is no pricing page."
       },
       "note": "The \"LLMs:\" line in their robots.txt is invented. It reads \"LLMs: https://www.silverbackstrategies.com/llms.txt\" and no crawler reads it. Apart from the publisher's own file, it is the only robots.txt in this index that tries to address AI at all, and it does so in a language nothing understands.",
@@ -544,7 +511,6 @@
       "sells": "Full-service digital marketing including AI visibility optimization.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -558,7 +524,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text and genuinely informative — founding year, location, service list, review count.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "The only named agents are AhrefsBot and AhrefsSiteAudit, both allowed. None of the eleven AI crawler names appears.",
         "pricing": "\"Thrive offers affordable pricing for any size business\". The only figures are budget ranges in a contact form, which are inputs, not prices.",
@@ -567,7 +532,7 @@
         "numbers": "Brazos: \"+300% Average Monthly Website Visits\".",
         "engines_named": "The ThriveAI page names ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity and Claude; the AI SEO page adds Copilot.",
         "own_platform": "ThriveAI is described as \"an exclusive suite of tools\" with no login or signup anywhere on the page, and Thrive Score is an audit their experts run for you. The one product with a real login, Thrive Local, is reputation and review software, not AI visibility.",
-        "machine_pricing": "llms.txt contains no currency figure at all; /llms-full.txt and /agents.md 404.",
+        "machine_pricing": "llms.txt contains no currency figure at all; /agents.md 404s.",
         "self_serve": "Every CTA leads to /contact/. Even Thrive Local offers only \"GET MY FREE DEMO\"."
       },
       "note": "Their robots.txt names an SEO tool's crawler by name and no AI crawler at all — a fair picture of where the industry's attention still sits.",
@@ -580,7 +545,6 @@
       "sells": "Growth marketing with a named Generative Engine Optimization service.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -594,7 +558,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text, but opens with a large block of ASCII art before any content.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "One rule, blocking a search parameter. None of the eleven names appears.",
         "pricing": "No figure published. The call to action is a free audit.",
@@ -603,7 +566,7 @@
         "numbers": "Mielle Organics: \"Over $100M+ In Funding\".",
         "engines_named": "The GEO service page names ChatGPT, Perplexity, Gemini, Claude, Copilot and Google AI Overviews.",
         "own_platform": "nova, with its own product page describing \"a proprietary platform that analyzes businesses through first-party data\" and a working client login. It is a broad marketing-intelligence platform rather than a dedicated AI-visibility tracker, but it is genuine gated software.",
-        "machine_pricing": "Their llms.txt resolves but carries no dollar figure; /llms-full.txt and /agents.md 404.",
+        "machine_pricing": "Their llms.txt resolves but carries no dollar figure; /agents.md 404s.",
         "self_serve": "\"Accelerate your business\", \"Talk to our team\" and \"Lock in a free audit\" all route to /work-with-us/."
       },
       "note": "The first thing an AI reads in their llms.txt is a logo drawn in punctuation.",
@@ -616,7 +579,6 @@
       "sells": "SEO, paid search and GEO/AEO for ecommerce and national brands.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -630,7 +592,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text agency overview — founded 2017, Saint Paul MN, services, typical client size.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Minimal WordPress with Crawl-delay: 10. None of the eleven names appears.",
         "pricing": "/pricing/ is a 404. No figure published.",
@@ -652,7 +613,6 @@
       "sells": "SEO and GEO for B2B SaaS and fintech.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -666,7 +626,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text index of pages, blog, services and authors. Served on the www host; the apex errored.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "\"User-agent: * / Allow: /\" with the sitemap listed twice. None of the eleven names appears.",
         "pricing": "No figure published. Dollar figures on site are client funding rounds.",
@@ -675,7 +634,7 @@
         "numbers": "Myos: \"Increased signups by 227.9% in 6 months\".",
         "engines_named": "The homepage names ChatGPT, Claude, Perplexity and Gemini; llms.txt adds DeepSeek.",
         "own_platform": "Atomic AGI, described on their homepage as \"AI-native SEO analytics built inside Omnius\", with its own site and a live customer login at app.atomicagi.com/login.",
-        "machine_pricing": "llms.txt is a sitemap-style index with no dollar figure; /llms-full.txt and /agents.md 404.",
+        "machine_pricing": "llms.txt is a sitemap-style index with no dollar figure; /agents.md 404s.",
         "self_serve": "On omnius.so every CTA is a contact modal or /book-a-call, which is a form, not a calendar. Atomic AGI does have a free tier and a 7-day trial, but on a separate domain that the agency site never links to."
       },
       "note": "The people named on their about page are clients giving testimonials, not staff. The only confirmed staff name is on a blog author page.",
@@ -688,7 +647,6 @@
       "sells": "Full-service digital marketing built on a proprietary generative retrieval process.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -702,7 +660,6 @@
       },
       "evidence": {
         "llms_txt": "Present. On the apex host, /llms.txt sends a 302 across hosts to http://www.interodigital.com/?llms_txt=1, dropping from HTTPS to HTTP; on the canonical www host the file returns real plain text directly.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Blocks only feed URLs and a tracking parameter. None of the eleven names appears.",
         "pricing": "No figure published. Dollar figures on site are client results.",
@@ -711,7 +668,7 @@
         "numbers": "Blackbaud: \"$22M increase in revenue\".",
         "engines_named": "The GEO service page names Google AI Overviews, ChatGPT, Gemini, Perplexity, Claude, Meta AI, Grok and Copilot.",
         "own_platform": "InteroBOT and Intero GRO are named, but GRO is described as \"our proprietary GEO framework\" — a methodology, with no product page, no pricing and no client login.",
-        "machine_pricing": "Their llms.txt is a link index of blog posts with no pricing; /llms-full.txt 404s.",
+        "machine_pricing": "Their llms.txt is a link index of blog posts with no pricing.",
         "self_serve": "\"Book a Strategy Session\", \"Talk to a GEO Expert\" and \"Get Your Free GEO Audit\" all go to /lets-talk/. The free audit is a form promising results in 24 hours plus a strategist call."
       },
       "note": "On their canonical www host the file is fine. On the apex host it is not a file at all — it is a query string behind a cross-host redirect that drops to HTTP. A crawler that reaches the apex and does not follow cross-host redirects sees nothing.",
@@ -724,7 +681,6 @@
       "sells": "Describes itself as an AI visibility and GEO marketing agency.",
       "scores": {
         "llms_txt": true,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -738,7 +694,6 @@
       },
       "evidence": {
         "llms_txt": "Plain text, All in One SEO generated.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Crawl-delay: 10 for all agents. None of the eleven names appears.",
         "pricing": "/pricing is a 404. No figure published.",
@@ -760,7 +715,6 @@
       "sells": "Organic growth for B2B and SaaS across AI and traditional search.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": true,
@@ -774,7 +728,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "The file is one line: a sitemap declaration. No user-agent rules at all.",
         "pricing": "\"Full-service engagements start at $6,000 /MO.\" on /consultation.",
@@ -783,7 +736,7 @@
         "numbers": "Pipedrive: \"increased revenue by 39%\".",
         "engines_named": "The homepage names ChatGPT, Perplexity and Google AI Overviews.",
         "own_platform": "Cloudkicker is named in body text as \"our proprietary AI-enabled content orchestration platform\", but /cloudkicker 404s and there is no login anywhere on the site.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404. Their \"$6,000/mo\" start price is HTML only.",
+        "machine_pricing": "/llms.txt and /agents.md both 404. Their \"$6,000/mo\" start price is HTML only.",
         "self_serve": "The site's only CTA is \"BOOK A CALL\", ending in \"BOOK A 30-MINUTE INTRO CALL\"."
       },
       "note": "",
@@ -796,7 +749,6 @@
       "sells": "Semantic GEO audits, structured data and digital PR aimed at being cited in AI answers.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -810,7 +762,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "Returns a bot-protection interstitial that says JavaScript is required. Not plain text, so it does not score.",
         "robots_ai": "A Crawl-delay line appears before any user-agent line, which makes it an orphaned directive. None of the eleven names appears.",
         "pricing": "No figure found. /pricing/ served the bot-protection interstitial.",
@@ -819,7 +770,7 @@
         "numbers": "SimpleTexting: \"500% YoY Increase in Organic SQLs\".",
         "engines_named": "Could not be confirmed. Every page fetched — homepage, /services/, /about/, the GEO page and the AI audit page — returned only \"You are being redirected... Javascript is required\" to an automated client. An AI crawler gets the same page.",
         "own_platform": "A third-party press release describes a platform called Barracuda, but /barracuda/ served the same JavaScript interstitial, so no product page or login could be confirmed on their own domain.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404.",
+        "machine_pricing": "/llms.txt and /agents.md both 404.",
         "self_serve": "No signup or checkout could be confirmed — the services page served the JavaScript interstitial."
       },
       "note": "Their bot protection served an “enable JavaScript” page to an automated client on /agents.md and on /pricing/. AI crawlers do not run JavaScript.",
@@ -832,7 +783,6 @@
       "sells": "Content marketing and digital PR with GEO consulting.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -846,7 +796,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "A long WordPress hardening file. Every rule targets User-agent: *, with Crawl-delay: 10. None of the eleven names appears.",
         "pricing": "/pricing is a 404. No figure published.",
@@ -868,7 +817,6 @@
       "sells": "B2B SEO and GEO/AEO, plus what it calls agentic search optimization.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -882,7 +830,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Stock WordPress with search-parameter blocks. None of the eleven names appears.",
         "pricing": "/pricing/ is a 404 and the sitemap contains no pricing or cost URL.",
@@ -891,7 +838,7 @@
         "numbers": "Cadence: \"934% increase in total keyword rankings\".",
         "engines_named": "The GEO page names ChatGPT, Gemini, Perplexity, Claude and SearchGPT.",
         "own_platform": "No named software. The service pages show an unnamed \"Analytics Dashboard\" graphic with no product name and no login anywhere on the site.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404 — no machine-readable file exists at all.",
+        "machine_pricing": "/llms.txt and /agents.md both 404 — no machine-readable file exists at all.",
         "self_serve": "The only paths are a contact form and a phone number."
       },
       "note": "They publish their own ranking of the top answer engine optimization companies and place themselves in it.",
@@ -904,7 +851,6 @@
       "sells": "SEO with a dedicated AEO service for AI Overviews, ChatGPT, Perplexity, Gemini and Copilot.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -918,7 +864,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Minimal stock WordPress. None of the eleven names appears.",
         "pricing": "/pricing/ and /seo-pricing/ are both 404. The homepage suggests budgeting at least $6,000 a month for SEO generally, which is advice, not their price.",
@@ -927,7 +872,7 @@
         "numbers": "Delta Electronics: \"105% increase in conversion events\".",
         "engines_named": "The AEO page names ChatGPT, Perplexity, Google AI Overviews, Gemini, Copilot and Claude, with dedicated sub-pages for several.",
         "own_platform": "No proprietary software is named on any page — only an unbranded \"adaptive search system\" their team runs.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404 and robots.txt references none of them.",
+        "machine_pricing": "/llms.txt and /agents.md both 404 and robots.txt references neither.",
         "self_serve": "\"Get pricing\", \"Book a Call\" and \"Start My Assessment\" all resolve to a multi-step form asking revenue, funding and budget, ending in a \"Book a Call\" button."
       },
       "note": "",
@@ -940,7 +885,6 @@
       "sells": "Research-driven AEO and SEO growth programmes.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -954,7 +898,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Minimal and fully permissive. None of the eleven names appears.",
         "pricing": "/pricing is a 404. No figure published.",
@@ -963,7 +906,7 @@
         "numbers": "Webflow: \"2x'd Sign-Ups from LLMs\"; Fourthwall: search revenue up 936%.",
         "engines_named": "The AEO page names ChatGPT, Perplexity, Gemini, Google AI Overviews and Claude.",
         "own_platform": "Their internal link API and topical platform are delivery tooling with no client login, and their own published research recommends third-party trackers instead.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404.",
+        "machine_pricing": "/llms.txt and /agents.md both 404.",
         "self_serve": "The button says \"START GROWING\" and the URL says /signup, but it is a lead form asking for budget range — no password, no payment, no trial. robots.txt even disallows it."
       },
       "note": "Their own sitemap gives their AEO service page a priority of 0.9, the second-highest on the site. All three AI-readability files are missing.",
@@ -976,7 +919,6 @@
       "sells": "Answer engine optimization with a focus on structured data.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -990,7 +932,6 @@
       },
       "evidence": {
         "llms_txt": "404 on both the apex and www hosts.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Three lines. Blocks one admin path. None of the eleven names appears.",
         "pricing": "No figure published; visitors are directed to contact.",
@@ -999,7 +940,7 @@
         "numbers": "SEKO Logistics: \"49% Increase in New Business Inquiries\".",
         "engines_named": "The AEO page names Google AI Overviews, Gemini, ChatGPT, Perplexity and Copilot, plus Siri and Alexa in the FAQs.",
         "own_platform": "Only third-party platforms are named across the site — Umbraco, HubSpot, Google Analytics. No proprietary product, login or client dashboard.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404.",
+        "machine_pricing": "/llms.txt and /agents.md both 404.",
         "self_serve": "\"Get in touch\", \"Speak to an Expert\" and \"Let's talk\" all route to /contact. The only other offer is a gated download."
       },
       "note": "",
@@ -1012,7 +953,6 @@
       "sells": "Enterprise SEO, paid media and analytics, with a GEO service and published AI citation research.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -1026,7 +966,6 @@
       },
       "evidence": {
         "llms_txt": "Returns HTML with a 200 status — the contact page, headed \"How Can We Help?\", not a text file. Scored as absent.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Opens with a greeting in ASCII. Generic rules only. None of the eleven names appears.",
         "pricing": "/pricing is a 404. No figure published.",
@@ -1048,7 +987,6 @@
       "sells": "Search marketing with a GEO and AI search service.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -1062,7 +1000,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Minimal Yoast block, allow-all, Crawl-delay: 10. None of the eleven names appears.",
         "pricing": "/pricing/ is a 404. The homepage explains pricing models in general terms but gives no figure for their own work.",
@@ -1071,7 +1008,7 @@
         "numbers": "Esqueleto: \"Organic Revenue Increase More Than 43%\".",
         "engines_named": "The GEO services page names ChatGPT, AI Overviews, Claude, Gemini, Copilot and Perplexity.",
         "own_platform": "ConversionIQ has its own product page and is pitched as a client dashboard, but no login or signup exists anywhere on the site — the product page's only button is \"TALK TO AN EXPERT\" — and it tracks ad conversions, not AI visibility.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404. Their $1,550 to $10,000+/month figures are HTML only.",
+        "machine_pricing": "/llms.txt and /agents.md both 404. Their $1,550 to $10,000+/month figures are HTML only.",
         "self_serve": "\"FREE CONSULT\", \"Free Consultation\" and \"Free Marketing Scorecard\" all route to /contact-us/."
       },
       "note": "",
@@ -1084,7 +1021,6 @@
       "sells": "Enterprise GEO, described as relevance engineering — query fan-out, passage retrieval, embeddings.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -1098,7 +1034,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "WordPress default plus an allow for Twitterbot. None of the eleven AI crawler names appears. No sitemap directive.",
         "pricing": "No figure published. The call to action is a call.",
@@ -1107,7 +1042,7 @@
         "numbers": "\"$2.4 BILLION in incremental revenue\" for a financial services client.",
         "engines_named": "The homepage names ChatGPT, Perplexity, Google AI Overviews and Google AI Mode.",
         "own_platform": "The only named asset, The AI Search Manual, is written documentation delivered as a guide and email series. No software, no product page, no client login.",
-        "machine_pricing": "No machine-readable file exists — /llms.txt and /llms-full.txt both 404. Their $30K–$500K+ bands are on an HTML page only.",
+        "machine_pricing": "No machine-readable file exists — /llms.txt 404s. Their $30K–$500K+ bands are on an HTML page only.",
         "self_serve": "Every CTA is \"LET'S TALK\", \"SCHEDULE A CALL\" or \"Reach Out to Us\", all to /contact."
       },
       "note": "Named in more of the industry's own best-GEO-agency lists than anyone else in this index, and the only one of those lists' regulars with no sitemap directive in robots.txt.",
@@ -1120,7 +1055,6 @@
       "sells": "A pure-play GEO agency getting B2B and SaaS brands cited in ChatGPT, Gemini and Perplexity.",
       "scores": {
         "llms_txt": false,
-        "llms_full": false,
         "agents_md": false,
         "robots_ai": false,
         "pricing": false,
@@ -1134,7 +1068,6 @@
       },
       "evidence": {
         "llms_txt": "404.",
-        "llms_full": "404.",
         "agents_md": "404.",
         "robots_ai": "Well-formed, with explicit allows for Googlebot, Bingbot, Twitterbot and facebookexternalhit. None of the eleven AI crawler names appears.",
         "pricing": "/pricing is a 404. No figure published.",
@@ -1143,7 +1076,7 @@
         "numbers": "Results are described in words rather than figures — \"First Verified Donations from AI Search Platforms\".",
         "engines_named": "The AI visibility page names ChatGPT, Gemini, Perplexity, Copilot and Google AI Overviews.",
         "own_platform": "The homepage names OtterlyAI — a third-party monitoring platform — rather than anything of their own. No proprietary tool, login or dashboard.",
-        "machine_pricing": "/llms.txt, /llms-full.txt and /agents.md all 404, and no dollar figure appears on any page.",
+        "machine_pricing": "/llms.txt and /agents.md both 404, and no dollar figure appears on any page.",
         "self_serve": "\"Start Ranking Today\" reads like a buy button but resolves to /contact, which offers a 15-minute call."
       },
       "note": "The only pure-play GEO agency in this index, and the only agency whose robots.txt takes the trouble to name four crawlers by name while naming none of the AI crawlers it sells visibility in.",

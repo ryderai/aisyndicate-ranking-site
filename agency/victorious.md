@@ -1,21 +1,20 @@
-# Victorious — 14/100
+# Victorious — 15/100
 
 Rank 16 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at victorious.com on 14 August 2026.
 
 **SEO with a dedicated AEO service for AI Overviews, ChatGPT, Perplexity, Gemini and Copilot.**
 
-- Index score: 14 of 100
+- Index score: 15 of 100
 - Also measured, not scored: 25 of 40
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404.
-- **FAIL — Runs its own tracking software** (20 pts). No proprietary software is named on any page — only an unbranded "adaptive search system" their team runs.
-- **PASS — Names the AI engines it covers** (14 pts). The AEO page names ChatGPT, Perplexity, Google AI Overviews, Gemini, Copilot and Claude, with dedicated sub-pages for several.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Minimal stock WordPress. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). /llms.txt, /llms-full.txt and /agents.md all 404 and robots.txt references none of them.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **FAIL — llms.txt published** (24 pts). 404.
+- **FAIL — Runs its own tracking software** (22 pts). No proprietary software is named on any page — only an unbranded "adaptive search system" their team runs.
+- **PASS — Names the AI engines it covers** (15 pts). The AEO page names ChatGPT, Perplexity, Google AI Overviews, Gemini, Copilot and Claude, with dedicated sub-pages for several.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Minimal stock WordPress. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). /llms.txt and /agents.md both 404 and robots.txt references neither.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

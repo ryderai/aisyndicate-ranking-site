@@ -11,13 +11,12 @@ Rank 28 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at siegemedia
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404.
-- **FAIL — Runs its own tracking software** (20 pts). BlueprintIQ's own page says it plainly: "Rather than a tool you have to log into, it works behind the scenes as part of our service." DataFlywheel is described as a four-phase system their team runs.
-- **FAIL — Names the AI engines it covers** (14 pts). Only ChatGPT is named, in one case-study line. The SEO service page says "AI Search" and "LLM Optimization" without naming an engine.
-- **FAIL — robots.txt names AI crawlers** (14 pts). A long WordPress hardening file. Every rule targets User-agent: *, with Crawl-delay: 10. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). /llms.txt 404s on both hosts and no price for their own work appears anywhere.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **FAIL — llms.txt published** (24 pts). 404.
+- **FAIL — Runs its own tracking software** (22 pts). BlueprintIQ's own page says it plainly: "Rather than a tool you have to log into, it works behind the scenes as part of our service." DataFlywheel is described as a four-phase system their team runs.
+- **FAIL — Names the AI engines it covers** (15 pts). Only ChatGPT is named, in one case-study line. The SEO service page says "AI Search" and "LLM Optimization" without naming an engine.
+- **FAIL — robots.txt names AI crawlers** (15 pts). A long WordPress hardening file. Every rule targets User-agent: *, with Crawl-delay: 10. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). /llms.txt 404s on both hosts and no price for their own work appears anywhere.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

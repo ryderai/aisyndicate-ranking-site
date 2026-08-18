@@ -1,21 +1,20 @@
-# Foundation — 36/100
+# Foundation — 39/100
 
 Rank 7 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at foundationinc.co on 14 August 2026.
 
 **Describes itself as an AI visibility and GEO marketing agency.**
 
-- Index score: 36 of 100
+- Index score: 39 of 100
 - Also measured, not scored: 15 of 40
 
 ## The index (scored)
 
-- **PASS — llms.txt published** (22 pts). Plain text, All in One SEO generated.
-- **FAIL — Runs its own tracking software** (20 pts). Their own article on measuring GEO says "there's no single Google Analytics for AI yet" and lists third-party tools. No product page, no login.
-- **PASS — Names the AI engines it covers** (14 pts). The AI visibility page names ChatGPT, Gemini, Claude, Perplexity and Google AI Overviews.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Crawl-delay: 10 for all agents. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). llms.txt is full of dollar figures, but every one is in an article title about another company's spend. None says what Foundation charges.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **PASS — llms.txt published** (24 pts). Plain text, All in One SEO generated.
+- **FAIL — Runs its own tracking software** (22 pts). Their own article on measuring GEO says "there's no single Google Analytics for AI yet" and lists third-party tools. No product page, no login.
+- **PASS — Names the AI engines it covers** (15 pts). The AI visibility page names ChatGPT, Gemini, Claude, Perplexity and Google AI Overviews.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Crawl-delay: 10 for all agents. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). llms.txt is full of dollar figures, but every one is in an article title about another company's spend. None says what Foundation charges.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

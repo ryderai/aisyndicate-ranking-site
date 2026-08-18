@@ -11,13 +11,12 @@ Rank 28 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at gofishdigi
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404.
-- **FAIL — Runs its own tracking software** (20 pts). A third-party press release describes a platform called Barracuda, but /barracuda/ served the same JavaScript interstitial, so no product page or login could be confirmed on their own domain.
-- **FAIL — Names the AI engines it covers** (14 pts). Could not be confirmed. Every page fetched — homepage, /services/, /about/, the GEO page and the AI audit page — returned only "You are being redirected... Javascript is required" to an automated client. An AI crawler gets the same page.
-- **FAIL — robots.txt names AI crawlers** (14 pts). A Crawl-delay line appears before any user-agent line, which makes it an orphaned directive. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). /llms.txt, /llms-full.txt and /agents.md all 404.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). Returns a bot-protection interstitial that says JavaScript is required. Not plain text, so it does not score.
+- **FAIL — llms.txt published** (24 pts). 404.
+- **FAIL — Runs its own tracking software** (22 pts). A third-party press release describes a platform called Barracuda, but /barracuda/ served the same JavaScript interstitial, so no product page or login could be confirmed on their own domain.
+- **FAIL — Names the AI engines it covers** (15 pts). Could not be confirmed. Every page fetched — homepage, /services/, /about/, the GEO page and the AI audit page — returned only "You are being redirected... Javascript is required" to an automated client. An AI crawler gets the same page.
+- **FAIL — robots.txt names AI crawlers** (15 pts). A Crawl-delay line appears before any user-agent line, which makes it an orphaned directive. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). /llms.txt and /agents.md both 404.
+- **FAIL — agents.md published** (9 pts). Returns a bot-protection interstitial that says JavaScript is required. Not plain text, so it does not score.
 
 ## Also measured (not scored)
 

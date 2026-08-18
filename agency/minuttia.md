@@ -1,23 +1,22 @@
-# Minuttia — 50/100
+# Minuttia — 54/100
 
 Rank 6 of 29 in The GEO Agency Index 2026 Edition. Audited at minuttia.com on 14 August 2026.
 
 **Content strategy across Google and generative AI engines.**
 
-- Index score: 50 of 100
+- Index score: 54 of 100
 - Also measured, not scored: 40 of 40
 
 > Their minimum fee and their two founders' full names are published to AI assistants in llms.txt and not on any HTML page. It is the only site in this index where the AI-facing file tells you more about the business than the website does.
 
 ## The index (scored)
 
-- **PASS — llms.txt published** (22 pts). Plain text, and unusually good — written for AI assistants rather than generated from a page list.
-- **FAIL — Runs its own tracking software** (20 pts). The "own AI visibility tool" they claim has no product name, no product page and no login. The nearest thing is a form that emails you a report and subscribes you to a newsletter.
-- **PASS — Names the AI engines it covers** (14 pts). /why-us/ says "We built our own AI visibility tool to track how your brand shows up across ChatGPT, Gemini, and Perplexity"; llms.txt adds Bing.
-- **FAIL — robots.txt names AI crawlers** (14 pts). None of the eleven names appears. The only Disallow rules block Googlebot and AdsBot-Google from /ai/.
-- **PASS — Price readable by a machine** (14 pts). llms.txt contains the line "Typical Minimum Engagement (directory listings): $5,000+" — the only agency besides the publisher to put a price where a machine can read it.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **PASS — llms.txt published** (24 pts). Plain text, and unusually good — written for AI assistants rather than generated from a page list.
+- **FAIL — Runs its own tracking software** (22 pts). The "own AI visibility tool" they claim has no product name, no product page and no login. The nearest thing is a form that emails you a report and subscribes you to a newsletter.
+- **PASS — Names the AI engines it covers** (15 pts). /why-us/ says "We built our own AI visibility tool to track how your brand shows up across ChatGPT, Gemini, and Perplexity"; llms.txt adds Bing.
+- **FAIL — robots.txt names AI crawlers** (15 pts). None of the eleven names appears. The only Disallow rules block Googlebot and AdsBot-Google from /ai/.
+- **PASS — Price readable by a machine** (15 pts). llms.txt contains the line "Typical Minimum Engagement (directory listings): $5,000+" — the only agency besides the publisher to put a price where a machine can read it.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

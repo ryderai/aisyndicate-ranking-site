@@ -1,23 +1,22 @@
-# uSERP — 14/100
+# uSERP — 15/100
 
 Rank 16 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at userp.io on 14 August 2026.
 
 **Digital PR and link building aimed at the publications AI engines cite.**
 
-- Index score: 14 of 100
+- Index score: 15 of 100
 - Also measured, not scored: 40 of 40
 
-> All three AI files return a styled HTML error page rather than a 404. To an AI client that reads status codes, a missing file looks like a successful answer.
+> Both AI files return a styled HTML error page rather than a 404. To an AI client that reads status codes, a missing file looks like a successful answer.
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). Returns the WordPress "can't find what you're looking for" HTML page.
-- **FAIL — Runs its own tracking software** (20 pts). They claim a "proprietary AEO Performance Reporting system", but it is unnamed, has no product page and no client login. The "Copilot" they mention is a third-party client-portal app.
-- **PASS — Names the AI engines it covers** (14 pts). The AI SEO page names ChatGPT, Claude, Perplexity, Gemini, Google AI Mode, Siri, Alexa and Meta.ai.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Minimal, allow-all. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). All three machine-readable paths return the site's HTML 404 page. Their $10,000–$25,000/month tiers are HTML only.
-- **FAIL — llms-full.txt published** (8 pts). Returns a full HTML document carrying "noindex, follow".
-- **FAIL — agents.md published** (8 pts). Same HTML page.
+- **FAIL — llms.txt published** (24 pts). Returns the WordPress "can't find what you're looking for" HTML page.
+- **FAIL — Runs its own tracking software** (22 pts). They claim a "proprietary AEO Performance Reporting system", but it is unnamed, has no product page and no client login. The "Copilot" they mention is a third-party client-portal app.
+- **PASS — Names the AI engines it covers** (15 pts). The AI SEO page names ChatGPT, Claude, Perplexity, Gemini, Google AI Mode, Siri, Alexa and Meta.ai.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Minimal, allow-all. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). All three machine-readable paths return the site's HTML 404 page. Their $10,000–$25,000/month tiers are HTML only.
+- **FAIL — agents.md published** (9 pts). Same HTML page.
 
 ## Also measured (not scored)
 

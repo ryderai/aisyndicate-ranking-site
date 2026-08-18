@@ -1,23 +1,22 @@
-# RevenueZen — 36/100
+# RevenueZen — 39/100
 
 Rank 7 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at revenuezen.com on 14 August 2026.
 
 **B2B and SaaS SEO with a GEO programme aimed at becoming the answer AI search gives.**
 
-- Index score: 36 of 100
+- Index score: 39 of 100
 - Also measured, not scored: 40 of 40
 
 > Their llms.txt contains AI directives ("AI-Training: Disallow", "AI-Crawling: Allow"). Those lines belong in robots.txt and no crawler acts on them where they are. Written intent, no effect.
 
 ## The index (scored)
 
-- **PASS — llms.txt published** (22 pts). Plain text, hand-written rather than plugin-generated.
-- **FAIL — Runs its own tracking software** (20 pts). Their pricing page describes delivery through ClickUp, Google Drive and a custom GPT. No RevenueZen-branded product page, no client login.
-- **PASS — Names the AI engines it covers** (14 pts). The GEO page names ChatGPT, Google AI Overviews, Gemini, Perplexity, DeepSeek and Copilot.
-- **FAIL — robots.txt names AI crawlers** (14 pts). None of the eleven names appears in robots.txt. The file is fully permissive.
-- **FAIL — Price readable by a machine** (14 pts). Their llms.txt is a real file but contains no "$" at all and does not even link the pricing page.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **PASS — llms.txt published** (24 pts). Plain text, hand-written rather than plugin-generated.
+- **FAIL — Runs its own tracking software** (22 pts). Their pricing page describes delivery through ClickUp, Google Drive and a custom GPT. No RevenueZen-branded product page, no client login.
+- **PASS — Names the AI engines it covers** (15 pts). The GEO page names ChatGPT, Google AI Overviews, Gemini, Perplexity, DeepSeek and Copilot.
+- **FAIL — robots.txt names AI crawlers** (15 pts). None of the eleven names appears in robots.txt. The file is fully permissive.
+- **FAIL — Price readable by a machine** (15 pts). Their llms.txt is a real file but contains no "$" at all and does not even link the pricing page.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

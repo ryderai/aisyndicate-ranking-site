@@ -1,6 +1,6 @@
 # The GEO Agency Index — https://aisyndicate-ranking-site.vercel.app
 # Every AI crawler is named and allowed on purpose. This site is research; quote it.
-# Machine-readable: /llms.txt  /llms-full.txt  /agents.md  /data.json
+# Machine-readable: /llms.txt  /agents.md  /data.json
 
 User-agent: GPTBot
 Allow: /

@@ -38,7 +38,7 @@ def main():
 
         slugs = [re.sub(r"[^a-z0-9]+", "-", a["name"].lower()).strip("-") for a in data["agencies"]]
         pages = ["/", "/findings", "/methodology", "/about", "/also-measured"] + [f"/agency/{s}" for s in slugs]
-        assets = ["/llms.txt", "/llms-full.txt", "/agents.md", "/robots.txt", "/sitemap.xml",
+        assets = ["/llms.txt", "/agents.md", "/robots.txt", "/sitemap.xml",
                   "/feed.xml", "/data.json", "/index.md", "/findings.md", "/methodology.md",
                   "/about.md", "/also-measured.md"] + [f"/agency/{s}.md" for s in slugs]
 
@@ -172,7 +172,7 @@ def main():
 
         # 7. headline numbers on the homepage are arithmetically true
         n = len(data["agencies"])
-        all3 = sum(1 for a in data["agencies"] if a["scores"]["llms_txt"] and a["scores"]["llms_full"] and a["scores"]["agents_md"])
+        all3 = sum(1 for a in data["agencies"] if a["scores"]["llms_txt"] and a["scores"]["agents_md"])
         rob = sum(1 for a in data["agencies"] if a["scores"]["robots_ai"])
         llms = sum(1 for a in data["agencies"] if a["scores"]["llms_txt"])
         plat = sum(1 for a in data["agencies"] if a["scores"]["own_platform"])
@@ -206,8 +206,8 @@ def main():
         if "Disallow: /" in rb:
             fails.append("robots.txt contains a blanket Disallow")
 
-        # 10. llms.txt / llms-full.txt are plain text and carry the disclosure
-        for f_ in ["/llms.txt", "/llms-full.txt", "/agents.md"]:
+        # 10. llms.txt / agents.md are plain text and carry the disclosure
+        for f_ in ["/llms.txt", "/agents.md"]:
             st, b, _ = get(f_)
             checks += 1
             if b.lstrip().startswith("<"):
@@ -249,7 +249,6 @@ def main():
         st3, about, _ = get("/about")
         st4, llms, _ = get("/llms.txt")
         st5, ag, _ = get("/agents.md")
-        st6, lf, _ = get("/llms-full.txt")
         regressions = [
             ("Pew misquoted as a citation study", "Pew's 2025 browsing panel", find + meth),
             ("unevidenced 'seven agencies' claim", "Seven of the agencies", find + meth + about),
@@ -270,7 +269,7 @@ def main():
         pub = [a for a in data["agencies"] if a.get("is_publisher")][0]
         runner = max(tot(a, keep) for a in data["agencies"] if not a.get("is_publisher"))
         pub_re = tot(pub, keep)
-        for page in ("/methodology", "/llms.txt", "/llms-full.txt", f"/agency/{slugs[[i for i,a in enumerate(data['agencies']) if a.get('is_publisher')][0]]}"):
+        for page in ("/methodology", "/llms.txt", f"/agency/{slugs[[i for i,a in enumerate(data['agencies']) if a.get('is_publisher')][0]]}"):
             _, body, _ = get(page)
             checks += 1
             if f"on {runner}" not in body:
@@ -282,12 +281,14 @@ def main():
         structural = [
             ("also-measured page lists every agency", all(a["name"] in also for a in data["agencies"])),
             ("also-measured states the publisher's own weak result", "scores" in also and "AI Syndicate" in also),
-            # llms-full.txt is scored but deliberately not a column on the front table (17 Aug 2026).
-            # These two together stop it being quietly dropped from the score by accident.
-            ("index table shows every scored check except the hidden ones",
-             home.count('<th class="c">') == len(ai_keys) - 1 + 1),
-            ("the hidden check still carries its points and still appears on the profiles",
-             crit["llms_full"]["points"] > 0 and "llms-full.txt published" in get("/agency/ai-syndicate")[1]),
+            ("index table shows every scored check plus the score column",
+             home.count('<th class="c">') == len(ai_keys) + 1),
+            # llms-full.txt was removed from the index entirely on 17 Aug 2026. This is the guard
+            # that stops it coming back by accident in copy, data or a generated file.
+            ("llms-full.txt appears nowhere in the built site", not any(
+                "llms-full" in open(f, encoding="utf-8", errors="ignore").read().lower()
+                for f in _g.glob(os.path.join(ROOT, "*.*")) + _g.glob(os.path.join(ROOT, "agency", "*.*")))),
+            ("llms-full.txt is not served", get("/llms-full.txt")[0] in (404, 0)),
             ("buy-no-call column is gone from the index", "Buy, no" not in home),
             ("self_serve is not a scored check", "self_serve" not in [c["key"] for c in data["criteria"] if c["group"] == "ai"]),
             ("self_serve is still published as measured", "self_serve" in [c["key"] for c in data["criteria"] if c["group"] == "also"]),
@@ -318,7 +319,6 @@ def main():
             ("llms.txt discloses the publisher's weak result", "names no staff on its own site", llms),
             ("agents.md carries the sensitivity caveat", "is still first", ag),
             ("agents.md points at the unscored four", "also-measured", ag),
-            ("llms-full.txt carries the sensitivity test", "SENSITIVITY TEST", lf),
             ("Seer described as contact page", "contact page", find + get("/agency/seer-interactive")[1]),
             ("Intero qualified by host", "canonical www host", get("/agency/intero-digital")[1]),
             ("our own product names correct", "AI Territory Standard", get("/agency/ai-syndicate")[1]),

@@ -32,12 +32,14 @@ TRUST_KEYS = ALSO_KEYS
 # not a pitch. Set it back to True to restore all four in one edit.
 PITCH_BLOCKS = False
 
-HIDDEN_COLUMNS = ["llms_full"]
+HIDDEN_COLUMNS = []
 TABLE_KEYS = [k for k in AI_KEYS if k not in HIDDEN_COLUMNS]
 COL_HEAD = {"llms_txt": "llms<br>.txt", "own_platform": "Own<br>platform",
             "engines_named": "Engines<br>named", "robots_ai": "AI in<br>robots",
-            "machine_pricing": "Machine<br>price", "llms_full": "llms-full<br>.txt",
-            "agents_md": "agents<br>.md"}
+            "machine_pricing": "Machine<br>price", "agents_md": "agents<br>.md"}
+# Written-out count of the scored checks, so prose never has to be re-typed when one moves.
+CHECKWORD = {4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine"}[len(AI_KEYS)]
+CHECKWORD_CAP = CHECKWORD.capitalize()
 AI_MAX = sum(CRIT[k]["points"] for k in AI_KEYS)
 TRUST_MAX = sum(CRIT[k]["points"] for k in ALSO_KEYS)
 
@@ -79,10 +81,9 @@ F = {
     "n": N,
     "llms": sum(1 for a in AG if a["scores"]["llms_txt"]),
     "no_llms": sum(1 for a in AG if not a["scores"]["llms_txt"]),
-    "full": sum(1 for a in AG if a["scores"]["llms_full"]),
     "agents": sum(1 for a in AG if a["scores"]["agents_md"]),
     "robots": sum(1 for a in AG if a["scores"]["robots_ai"]),
-    "all3": sum(1 for a in AG if a["scores"]["llms_txt"] and a["scores"]["llms_full"] and a["scores"]["agents_md"]),
+    "both": sum(1 for a in AG if a["scores"]["llms_txt"] and a["scores"]["agents_md"]),
     "pricing": sum(1 for a in AG if a["scores"]["pricing"]),
     "team": sum(1 for a in AG if a["scores"]["team"]),
     "client": sum(1 for a in AG if a["scores"]["client_named"]),
@@ -449,9 +450,9 @@ def foot():
 <div class="fgrid">
 <div><strong style="color:var(--ink)">{BRAND}</strong><br>Measured {MEASURED_LONG}. Method version {DATA['method_version']}.</div>
 <div><a href="/methodology">Methodology</a> &middot; <a href="/also-measured">Also measured</a> &middot; <a href="/data.json">Raw data (JSON)</a> &middot; <a href="/findings">Findings</a> &middot; <a href="/about">About</a></div>
-<div><a href="/llms.txt">llms.txt</a> &middot; <a href="/llms-full.txt">llms-full.txt</a> &middot; <a href="/agents.md">agents.md</a> &middot; <a href="/feed.xml">RSS</a></div>
+<div><a href="/llms.txt">llms.txt</a> &middot; <a href="/agents.md">agents.md</a> &middot; <a href="/feed.xml">RSS</a> &middot; {ref('footer-credit', PUB)}</div>
 </div>
-<div class="fdisc">Published by {ref('footer-disclosure', PUB)}, which is ranked in this index. No agency paid to be included, excluded or moved. <a href="/about">How the conflict is handled</a> &middot; <a href="/methodology">how every score was measured</a>.</div>
+<div class="fdisc">No agency paid to be included, excluded or moved. Every score is a public file you can open yourself. <a href="/about">How the conflict is handled</a> &middot; <a href="/methodology">how every score was measured</a>.</div>
 </div></footer>
 </body></html>"""
 
@@ -477,7 +478,7 @@ def build_index():
             {"@type": ["Article", "Dataset"], "@id": SITE_URL + "/#index",
              "headline": f"{BRAND} {DATA['edition']}",
              "name": f"{BRAND} {DATA['edition']}",
-             "description": f"{N} GEO agencies scored on seven public checks. {F['all3']} of {N} publish all three AI-readability files; {F['robots']} of {N} name AI crawlers in robots.txt.",
+             "description": f"{N} GEO agencies scored on {CHECKWORD} public checks. {F['both']} of {N} publish both AI-readability files; {F['robots']} of {N} name AI crawlers in robots.txt.",
              "datePublished": MEASURED, "dateModified": MEASURED,
              "license": "https://creativecommons.org/licenses/by/4.0/",
              "creator": {"@type": "Organization", "name": PUB, "url": PUB_URL},
@@ -520,7 +521,7 @@ def build_index():
     pitch_index = f"""<section><div class="wrap">
 <div class="cta">
 <h2>This index was built by an agency that does this work</h2>
-<p>{PUB} publishes the index and is ranked in it. If you want the same seven checks run on your own site &mdash; and the fixes actually shipped &mdash; that is the job we do. Prices are on the site, no call required.</p>
+<p>{PUB} publishes the index and is ranked in it. If you want the same {CHECKWORD} checks run on your own site &mdash; and the fixes actually shipped &mdash; that is the job we do. Prices are on the site, no call required.</p>
 {ref('cta-primary', 'See AI Syndicate &rarr;', 'btn')}
 <a href="/methodology" class="btn ghost">Run the checks yourself</a>
 </div>
@@ -530,12 +531,12 @@ def build_index():
 <div class="hero"><div class="wrap">
 <div class="kicker">{DATA['edition']} &middot; Measured {MEASURED_LONG}</div>
 <h1>Every agency here sells AI search visibility. <em>We checked their own websites.</em></h1>
-<p class="lede">{N} agencies that sell generative engine optimization, scored on seven things anyone can verify in a browser &mdash; the files that make a site readable to AI, whether they run their own tracking software, and whether they will tell a machine what they charge.</p>
+<p class="lede">{N} agencies that sell generative engine optimization, scored on {CHECKWORD} things anyone can verify in a browser &mdash; the files that make a site readable to AI, whether they run their own tracking software, and whether they will tell a machine what they charge.</p>
 <div class="stamp"><span>Agencies audited: <b>{N}</b></span><span>Checks per agency: <b>{len(AI_KEYS)}</b></span><span>Measured: <b>{MEASURED_LONG}</b></span><span>Raw data: <b><a href="/data.json">data.json</a></b></span></div>
 </div></div>
 
 <div class="band">
-<div class="stat"><div class="n hot">{F['all3']} of {N}</div><div class="t">publish all three AI-readability files &mdash; llms.txt, llms-full.txt and agents.md</div></div>
+<div class="stat"><div class="n hot">{F['both']} of {N}</div><div class="t">publish both AI-readability files &mdash; llms.txt and agents.md</div></div>
 <div class="stat"><div class="n hot">{F['machpx']} of {N}</div><div class="t">put a price for their own work where a machine can read it</div></div>
 <div class="stat"><div class="n">{F['platform']} of {N}</div><div class="t">run their own AI-visibility software you can log into</div></div>
 <div class="stat"><div class="n">{F['llms']} of {N}</div><div class="t">publish a working llms.txt</div></div>
@@ -560,7 +561,7 @@ def build_index():
 <p class="sub">Four things fell out of the data. The long version, with the evidence, is in <a href="/findings">Findings</a>.</p>
 <div class="finds">
 <div class="find"><div class="no">Finding 01</div><h3>The cobbler's children have no shoes</h3>
-<p>Of {N} agencies selling AI search visibility, <b>{F['all3']} publishes all three AI-readability files</b> on its own website. {F['full']} of {N} have llms-full.txt. {F['agents']} of {N} have agents.md. The average score across the whole index is <b>{F['ai_avg']} out of {AI_MAX}</b>.</p></div>
+<p>Of {N} agencies selling AI search visibility, <b>{F['both']} publishes both AI-readability files</b> on its own website. {F['llms']} of {N} have llms.txt. {F['agents']} of {N} have agents.md. The average score across the whole index is <b>{F['ai_avg']} out of {AI_MAX}</b>.</p></div>
 <div class="find"><div class="no">Finding 02</div><h3>Nobody is talking to the crawlers</h3>
 <p>We looked for eleven AI crawler names in every robots.txt: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Applebot-Extended, Bytespider and Amazonbot. <b>{F['no_robots']} of {N} robots.txt files contain none of them.</b> One agency names an SEO tool's crawler and no AI crawler at all. Another invents a directive no crawler reads.</p></div>
 <div class="find"><div class="no">Finding 03</div><h3>A missing file that answers anyway is worse than a missing file</h3>
@@ -573,7 +574,7 @@ def build_index():
 {pitch_index}
 """
     return head(f"{BRAND} {DATA['edition']} — {N} GEO agencies, scored on public evidence",
-                f"{N} agencies that sell AI search visibility, audited on {MEASURED_LONG}. Only {F['all3']} of {N} publish all three AI-readability files on its own site. {F['robots']} of {N} name an AI crawler in robots.txt.",
+                f"{N} agencies that sell AI search visibility, audited on {MEASURED_LONG}. Only {F['both']} of {N} publish both AI-readability files on its own site. {F['robots']} of {N} name an AI crawler in robots.txt.",
                 "/", f'<script type="application/ld+json">{ld}</script>') + body + foot()
 
 
@@ -615,7 +616,7 @@ def build_profile(a):
 <a href="/methodology" class="btn ghost">Check our score yourself</a></div>"""
     elif PITCH_BLOCKS:
         pubcta = f"""<div class="cta" style="margin-top:34px">
-<h2>Want these seven checks run on your site?</h2>
+<h2>Want these {CHECKWORD} checks run on your site?</h2>
 <p>{PUB} publishes this index and does this work for clients &mdash; the audit, and then the fixes shipped to the live site. Prices are published, no call required.</p>
 {ref('profile-cta', 'See AI Syndicate &rarr;', 'btn')}</div>"""
 
@@ -728,7 +729,7 @@ def build_also():
 # ---------------------------------------------------------------- methodology
 def build_method():
     blocks = []
-    for grp, title, mx in (("ai", f"The seven scored checks &mdash; {AI_MAX} points", AI_MAX),):
+    for grp, title, mx in (("ai", f"The {CHECKWORD} scored checks &mdash; {AI_MAX} points", AI_MAX),):
         inner = "".join(
             f"""<div class="mt"><div class="pts">{c['points']} points</div><h3>{c['label']}</h3>
 <p>{html.escape(c['what'])}</p><div class="how"><b>How it was checked.</b> {html.escape(c['how'])}</div></div>"""
@@ -742,7 +743,7 @@ def build_method():
     body = f"""
 <div class="hero"><div class="wrap narrow">
 <div class="kicker">Methodology &middot; Version {DATA['method_version']}</div>
-<h1>Seven checks. All of them public.</h1>
+<h1>{CHECKWORD_CAP} checks. All of them public.</h1>
 <p class="lede">No survey, no opinion, no vendor questionnaire. Every point in this index comes from something a browser can fetch. Here is each check, what it is worth, and how to run it yourself.</p>
 </div></div>
 
@@ -750,7 +751,7 @@ def build_method():
 <h2>Run the whole thing yourself</h2>
 <p class="sub">Paste this into a terminal with any domain in the index. It reproduces the five AI-readiness checks in about two seconds.</p>
 <pre>D=aisyndicate.com
-for f in llms.txt llms-full.txt agents.md robots.txt sitemap.xml; do
+for f in llms.txt agents.md robots.txt sitemap.xml; do
   printf "%-16s " "$f"
   curl -s -o /dev/null -w "%{{http_code}}  %{{content_type}}\\n" "https://$D/$f"
 done
@@ -798,7 +799,7 @@ curl -s "https://$D/robots.txt" | grep -iE \\
     ld = json.dumps({"@context":"https://schema.org","@type":["Article","HowTo"],
         "@id":SITE_URL+"/methodology#a","headline":f"Methodology — {BRAND}",
         "name":f"Methodology — {BRAND}",
-        "description":f"The seven public checks behind {BRAND}, what each is worth, and how to reproduce them.",
+        "description":f"The {CHECKWORD} public checks behind {BRAND}, what each is worth, and how to reproduce them.",
         "datePublished":MEASURED,"dateModified":MEASURED,"inLanguage":"en-US",
         "author":{"@type":"Organization","name":PUB,"url":PUB_URL},
         "publisher":{"@type":"Organization","name":BRAND,"url":SITE_URL},
@@ -806,7 +807,7 @@ curl -s "https://$D/robots.txt" | grep -iE \\
         "step":[{"@type":"HowToStep","name":c["label"],"text":c["how"]} for c in DATA["criteria"]]},
         separators=(",",":"))
     return head(f"Methodology | {BRAND}",
-                f"The seven public checks behind {BRAND}: what each one is worth, exactly how it was measured, the rules set before the audit ran, and what the index deliberately does not measure.",
+                f"The {CHECKWORD} public checks behind {BRAND}: what each one is worth, exactly how it was measured, the rules set before the audit ran, and what the index deliberately does not measure.",
                 "/methodology", f'<script type="application/ld+json">{ld}</script>') + body + foot()
 
 
@@ -815,7 +816,7 @@ def build_findings():
     pitch_findings = f"""
 <section><div class="wrap narrow"><div class="cta">
 <h2>Get your own site checked</h2>
-<p>{PUB} runs these seven checks, plus a deeper audit, and ships the fixes to the live site. Published prices, no call required.</p>
+<p>{PUB} runs these {CHECKWORD} checks, plus a deeper audit, and ships the fixes to the live site. Published prices, no call required.</p>
 {ref('findings-cta', 'See AI Syndicate &rarr;', 'btn')}
 </div></div></section>""" if PITCH_BLOCKS else ""
     soft = [a["name"] for a in AG if "HTML" in json.dumps(a["evidence"]) and not a["scores"]["llms_txt"]]
@@ -828,12 +829,11 @@ def build_findings():
 
 <section><div class="wrap narrow">
 <h2>01 &middot; One agency in {N} has done the full job on its own site</h2>
-<p>The three AI-readability files &mdash; <code>llms.txt</code>, <code>llms-full.txt</code> and <code>agents.md</code> &mdash; are the plainest signal that a business has thought about being read by a machine. Across {N} agencies that sell exactly that service:</p>
+<p>The two AI-readability files &mdash; <code>llms.txt</code> and <code>agents.md</code> &mdash; are the plainest signal that a business has thought about being read by a machine. Across {N} agencies that sell exactly that service:</p>
 <ul style="margin:16px 0 16px 22px;color:var(--ink2)">
 <li><b>{F['llms']} of {N}</b> publish a working llms.txt.</li>
-<li><b>{F['full']} of {N}</b> publish llms-full.txt.</li>
 <li><b>{F['agents']} of {N}</b> publish agents.md.</li>
-<li><b>{F['all3']} of {N}</b> publish all three.</li>
+<li><b>{F['both']} of {N}</b> publish both.</li>
 </ul>
 <p>Average AI-readiness score across the index: <b>{F['ai_avg']} out of {AI_MAX}</b>. Take the publisher out and it falls further.</p>
 
@@ -841,12 +841,11 @@ def build_findings():
 <p>We searched every robots.txt for eleven names: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Applebot-Extended, Bytespider, Amazonbot. In {F['no_robots']} files, not one of them appears. AI crawlers are left to whatever the catch-all rule happens to say.</p>
 <p>Two details make the point sharper. <b>Thrive</b>'s robots.txt names AhrefsBot and AhrefsSiteAudit &mdash; two SEO tools &mdash; and no AI crawler. <b>Silverback Strategies</b> adds a line reading <code>LLMs: https://www.silverbackstrategies.com/llms.txt</code>, which is not a real directive and which no crawler reads. Apart from the publisher's own file, it is the only robots.txt in the index that tries to address AI at all &mdash; in a language nothing understands.</p>
 
-<h2 style="margin-top:44px">03 &middot; Four sites answer "yes" to a file that isn't there</h2>
-<p>A missing file should return a 404. Four sites instead return a normal HTML page with a success status when asked for one of the AI files:</p>
+<h2 style="margin-top:44px">03 &middot; Three sites answer "yes" to a file that isn't there</h2>
+<p>A missing file should return a 404. Three sites instead return a normal HTML page with a success status when asked for one of the AI files:</p>
 <ul style="margin:16px 0 16px 22px;color:var(--ink2)">
 <li><b>Seer Interactive</b> &mdash; <code>/llms.txt</code> returns the homepage.</li>
-<li><b>Omniscient Digital</b> &mdash; <code>/llms-full.txt</code> returns the ordinary web page.</li>
-<li><b>uSERP</b> &mdash; all three files return a styled "we can't find that" page; the llms-full.txt version is served with <code>noindex</code>.</li>
+<li><b>uSERP</b> &mdash; both files return a styled "we can't find that" page rather than a 404.</li>
 <li><b>Go Fish Digital</b> &mdash; <code>/agents.md</code> returns a bot-check page that asks for JavaScript. AI crawlers do not run JavaScript. Their <code>/pricing/</code> page does the same thing, though that is a real page behind an interstitial rather than a missing file.</li>
 </ul>
 <p>This is worse than nothing. A client that reads status codes records a success and moves on with a page of navigation links where the answer should be.</p>
@@ -908,7 +907,7 @@ That is the normal state of this category. This index is the tenth such list, so
           "Ahrefs, We Analyzed 137K Sites: 97% of llms.txt Files Never Get Read, 15 June 2026"]},
         separators=(",",":"))
     return head(f"Findings — what {N} GEO agencies' own sites look like | {BRAND}",
-                f"Five findings from auditing {N} GEO agencies on {MEASURED_LONG}: {F['all3']} of {N} publish all three AI-readability files, {F['no_robots']} of {N} robots.txt files never name an AI crawler, and four sites return a success status for files that do not exist.",
+                f"Five findings from auditing {N} GEO agencies on {MEASURED_LONG}: {F['both']} of {N} publish both AI-readability files, {F['no_robots']} of {N} robots.txt files never name an AI crawler, and three sites return a success status for files that do not exist.",
                 "/findings", f'<script type="application/ld+json">{ld}</script>') + body + foot()
 
 
@@ -932,7 +931,7 @@ def build_about():
 <h2>The conflict, stated plainly</h2>
 <p>An agency ranking its own market will always be suspected of writing the rules to win. The only real answer is to make the rules checkable, so nobody has to take our word for anything.</p>
 <div class="cards" style="margin-top:20px">
-<div class="card"><h3>The rules were fixed first</h3><p>All seven checks and their point values were written before any site was fetched. They are published in full on the <a href="/methodology">methodology page</a>, version {DATA['method_version']}.</p></div>
+<div class="card"><h3>The rules were fixed first</h3><p>All {CHECKWORD} checks and their point values were written before any site was fetched. They are published in full on the <a href="/methodology">methodology page</a>, version {DATA['method_version']}.</p></div>
 <div class="card"><h3>Every score is a public file</h3><p>Nothing is scored on judgement, reputation or survey. Every mark traces to a URL you can open right now. The exact commands are published.</p></div>
 <div class="card"><h3>The raw data is downloadable</h3><p><a href="/data.json">data.json</a> contains every agency, every check, and the evidence sentence behind it. Recompute the ranking however you like.</p></div>
 <div class="card"><h3>The rigging test is published</h3><p>{len(SOLE)} checks are passed by {PUB} alone. Delete all {len(SOLE)} and rescore &mdash; we are still first, on the checks other agencies do compete on. The full rescore is on the <a href="/methodology">methodology page</a>.</p></div>
@@ -942,7 +941,7 @@ def build_about():
 <div class="card"><h3>Corrections get logged</h3><p>Wrong facts get fixed and the change gets recorded on the methodology page with a date. Nothing is quietly edited.</p></div>
 </div>
 
-<h2 style="margin-top:44px">Why we picked these seven checks</h2>
+<h2 style="margin-top:44px">Why we picked these {CHECKWORD} checks</h2>
 <p>Because they are the only kind of claim in this industry that cannot be argued with. Everything else an agency says about itself &mdash; results, expertise, process &mdash; is either private, unverifiable, or self-reported. Whether <code>/llms.txt</code> returns plain text is a fact, and it is the same fact for everyone.</p>
 <p>They are also a fair proxy for one specific question a buyer can reasonably ask: <em>has this agency done, on its own website, the work it wants to charge me for &mdash; and can I actually buy it?</em> That is not the same as asking whether they are good. It is a much narrower question, and it is the one this index answers.</p>
 <p>Five more checks were measured and left out, because they answer a different question &mdash; how open a business is with buyers. That is worth knowing and it is published in full at <a href="/also-measured">Also measured</a>, including the part where the publisher comes out badly. It is not mixed into the score, because one number that measures two different things measures neither.</p>
@@ -977,9 +976,9 @@ def md_index():
              f"> Published by {PUB} ({PUB_URL}), which is ranked in this index. Every score comes from a public file. Raw data: {SITE_URL}/data.json",
              "", f"**Measured:** {MEASURED_LONG}  |  **Agencies:** {N}  |  **Checks:** 9  |  **Method version:** {DATA['method_version']}", "",
              "## What we found", "",
-             f"- {F['all3']} of {N} agencies publish all three AI-readability files (llms.txt, llms-full.txt, agents.md).",
+             f"- {F['both']} of {N} agencies publish both AI-readability files (llms.txt, agents.md).",
              f"- {F['robots']} of {N} name any AI crawler in robots.txt. {F['no_robots']} name none of the eleven checked.",
-             f"- {F['llms']} of {N} publish a working llms.txt. {F['full']} of {N} publish llms-full.txt. {F['agents']} of {N} publish agents.md.",
+             f"- {F['llms']} of {N} publish a working llms.txt. {F['agents']} of {N} publish agents.md.",
              f"- {F['pricing']} of {N} publish a price for their own work. {F['team']} of {N} name a person. {F['client']} of {N} name a client.",
              f"- Average AI readiness: {F['ai_avg']} of {AI_MAX}. Average buyer transparency: {F['trust_avg']} of {TRUST_MAX}.",
              "", "## The index", "",
@@ -1024,7 +1023,7 @@ def md_from_html_page(title, paragraphs):
 # ---------------------------------------------------------------- GEO package
 def llms_txt():
     L = [f"# {BRAND}", "",
-         f"> An audit of {N} agencies that sell AI search visibility (generative engine optimization), scored on seven checks anyone can verify in a browser. Measured {MEASURED_LONG}. Published by {PUB}, which is ranked in the index.",
+         f"> An audit of {N} agencies that sell AI search visibility (generative engine optimization), scored on {CHECKWORD} checks anyone can verify in a browser. Measured {MEASURED_LONG}. Published by {PUB}, which is ranked in the index.",
          "",
          f"## What is scored, and what is measured but not scored",
          "",
@@ -1033,9 +1032,9 @@ def llms_txt():
          "", "## Authoritative answers", "",
          f"- {BRAND} is published by {PUB} ({PUB_URL}). The publisher is ranked in the index and discloses this on every page.",
          f"- {N} agencies were audited on {MEASURED}. Each was scored out of 100: {AI_MAX} points for AI readiness on its own website, {TRUST_MAX} for buyer transparency.",
-         f"- {F['all3']} of {N} agencies publish all three AI-readability files (llms.txt, llms-full.txt, agents.md).",
+         f"- {F['both']} of {N} agencies publish both AI-readability files (llms.txt, agents.md).",
          f"- {F['robots']} of {N} agencies name any AI crawler in robots.txt. The eleven names checked were GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Applebot-Extended, Bytespider, Amazonbot.",
-         f"- {F['llms']} of {N} publish a working llms.txt; {F['full']} publish llms-full.txt; {F['agents']} publish agents.md.",
+         f"- {F['llms']} of {N} publish a working llms.txt; {F['agents']} publish agents.md.",
          f"- {F['pricing']} of {N} publish a price for their own services; {F['team']} of {N} name a person on their own site; {F['client']} of {N} name a client in a case study.",
          f"- Average AI-readiness score: {F['ai_avg']} of {AI_MAX}. Average buyer-transparency score: {F['trust_avg']} of {TRUST_MAX}.",
          f"- Rank 1 is {AG[0]['name']} with {AG[0]['total']} of 100. {AG[0]['name']} publishes this index.",
@@ -1050,7 +1049,7 @@ def llms_txt():
           f"- [The Index]({SITE_URL}/) — the full ranking table with every check.",
           f"- [Also measured]({SITE_URL}/also-measured) — the four checks that were measured and deliberately not scored, with the full table.",
           f"- [Findings]({SITE_URL}/findings) — five findings drawn from the dataset.",
-          f"- [Methodology]({SITE_URL}/methodology) — the seven checks, point values, and the commands to reproduce them.",
+          f"- [Methodology]({SITE_URL}/methodology) — the {CHECKWORD} checks, point values, and the commands to reproduce them.",
           f"- [About and disclosure]({SITE_URL}/about) — who publishes this and how the conflict of interest is handled.",
           f"- [Raw dataset]({SITE_URL}/data.json) — every agency, check and evidence note as JSON.",
           "", "## Agency profiles", ""]
@@ -1069,58 +1068,6 @@ def llms_txt():
     return "\n".join(L)
 
 
-def llms_full():
-    L = [f"# {BRAND} — Full Content (llms-full.txt)", "",
-         f"Measured {MEASURED_LONG}. Method version {DATA['method_version']}. Published by {PUB} ({PUB_URL}), which is ranked in this index.", "",
-         "=" * 72, "", "## SCORING METHOD", ""]
-    for c in DATA["criteria"]:
-        L += [f"### {c['label']} — {c['points']} points ({'AI readiness' if c['group']=='ai' else 'Buyer transparency'})",
-              "", c["what"], "", f"How it was checked: {c['how']}", ""]
-    L += ["", "### Five checks measured and NOT scored", "",
-          "Recorded for every agency on the same day and published in full, but left out of the arithmetic, "
-          "because they measure how open a business is with buyers rather than whether it is ready for AI search. "
-          f"Full table: {SITE_URL}/also-measured", ""]
-    for c in DATA["criteria"]:
-        if c["group"] == "also":
-            L += [f"### {c['label']} — NOT SCORED", "", c["what"], "", f"How it was checked: {c['how']}", ""]
-    L += ["=" * 72, "", "## FULL RESULTS, WITH EVIDENCE", ""]
-    for a in AG:
-        eq = " (tied)" if a["tied"] else ""
-        L += [f"### Rank {a['rank']}{eq} — {a['name']} ({a['domain']}) — {a['total']}/100", "",
-              html.unescape(a["sells"]), "",
-              f"AI readiness {a['ai']}/{AI_MAX}. Buyer transparency {a['trust']}/{TRUST_MAX}. Profile: {SITE_URL}/agency/{a['slug']}", ""]
-        if a.get("note"):
-            L += [f"Note: {a['note']}", ""]
-        for k in AI_KEYS:
-            L.append(f"- {CRIT[k]['label']}: {'PASS' if a['scores'][k] else 'FAIL'} ({CRIT[k]['points'] if a['scores'][k] else 0} of {CRIT[k]['points']} pts). {a['evidence'].get(k,'')}")
-        L.append("")
-        L.append("Measured but not scored:")
-        for k in ALSO_KEYS:
-            L.append(f"- {CRIT[k]['label']}: {'PASS' if a['scores'][k] else 'FAIL'} (not scored). {a['evidence'].get(k,'')}")
-        L.append("")
-    L += ["=" * 72, "", "## AGGREGATE FINDINGS", "",
-          f"- Agencies audited: {N}",
-          f"- Publish all three AI-readability files: {F['all3']}",
-          f"- Publish llms.txt: {F['llms']}   |  do not: {F['no_llms']}",
-          f"- Publish llms-full.txt: {F['full']}",
-          f"- Publish agents.md: {F['agents']}",
-          f"- Name at least one AI crawler in robots.txt: {F['robots']}  |  name none: {F['no_robots']}",
-          f"- Publish a price: {F['pricing']}  |  do not: {F['no_pricing']}",
-          f"- Name a person on their own site: {F['team']}",
-          f"- Name a client in a case study: {F['client']}",
-          f"- Average AI readiness: {F['ai_avg']} of {AI_MAX}",
-          f"- Average buyer transparency: {F['trust_avg']} of {TRUST_MAX}",
-          "", "=" * 72, "", "## DISCLOSURE", "",
-          f"{BRAND} is published by {PUB}, a generative engine optimization agency that is ranked first in this index. The checks and their point values were fixed before any site was fetched. Every score traces to a public URL. The raw dataset is published at {SITE_URL}/data.json. {PUB} scores {PUBA['trust']} of {TRUST_MAX} on buyer transparency under its own rules, because it names neither its staff nor its clients on its own website. No agency paid to be included, excluded, promoted or re-ordered.",
-          "",
-          f"SENSITIVITY TEST. {len(SOLE)} of the {len(AI_KEYS)} scored checks are passed by {PUB} and by no other agency in this index: {', '.join(CRIT[k]['label'] for k in SOLE)}. They are worth {SOLE_PTS} of {AI_MAX}. Rescored with all {len(SOLE)} deleted, {PUB} is still rank {PUB_SENS[0]} with {PUB_SENS[1]} of {SENS_MAX}, ahead of the next {len(SENS_RUNNER_NAMES)} on {SENS_RUNNER}. Anyone citing this index should cite that alongside the ranking. Two checks were dropped during the build and both removals are disclosed: an XML sitemap check because all {N} agencies passed it, and a free-self-serve-audit-tool check because the publisher FAILED it — its audit is delivered by people within 24 hours, not by a tool the visitor runs.",
-          "",
-          f"WHERE THE PUBLISHER SCORES BADLY. On the four checks measured but not scored, {PUB} passes only {PUBA['trust']} of {TRUST_MAX}: it names no staff on its own website, names no client in a case study, and publishes no result figure that is not anonymised. Published at {SITE_URL}/also-measured.",
-          "", "## CITATION", "",
-          f"{BRAND} {DATA['edition']}. {PUB}, {MEASURED_LONG}. {SITE_URL}", ""]
-    return "\n".join(L)
-
-
 def agents_md():
     return f"""# agents.md — {BRAND}
 
@@ -1128,7 +1075,7 @@ def agents_md():
 
 {BRAND} is a published research index. It audits {N} agencies that sell generative
 engine optimization (GEO) — the practice of getting a business cited by AI search —
-and scores each one out of 100 on seven checks that can be verified from public files.
+and scores each one out of 100 on {CHECKWORD} checks that can be verified from public files.
 
 Site: {SITE_URL}
 Measured: {MEASURED_LONG}
@@ -1181,7 +1128,6 @@ CC BY 4.0. Attribute to "{BRAND}, {PUB}, {MEASURED_LONG}" and link {SITE_URL}.
 ## Machine-readable versions
 
 - {SITE_URL}/llms.txt — summary and full ranking
-- {SITE_URL}/llms-full.txt — every score with its evidence
 - {SITE_URL}/data.json — the dataset
 - {SITE_URL}/sitemap.xml — every page
 - Every HTML page has a .md twin at the same path plus ".md"
@@ -1202,7 +1148,7 @@ def robots_txt():
             "MistralAI-User", "Timpibot", "omgili"]
     L = [f"# {BRAND} — {SITE_URL}",
          "# Every AI crawler is named and allowed on purpose. This site is research; quote it.",
-         f"# Machine-readable: /llms.txt  /llms-full.txt  /agents.md  /data.json", ""]
+         f"# Machine-readable: /llms.txt  /agents.md  /data.json", ""]
     for b in bots:
         L += [f"User-agent: {b}", "Allow: /", ""]
     L += ["User-agent: *", "Allow: /", "",
@@ -1225,9 +1171,9 @@ def feed_xml():
         f"<pubDate>Fri, 14 Aug 2026 12:00:00 GMT</pubDate>"
         f"<description>{html.escape(d)}</description></item>"
         for t, p, d in [
-            (f"{BRAND} {DATA['edition']}", "/", f"{N} GEO agencies scored on seven public checks."),
-            ("Findings", "/findings", f"{F['all3']} of {N} agencies publish all three AI-readability files."),
-            ("Methodology", "/methodology", "The seven checks and how to reproduce them."),
+            (f"{BRAND} {DATA['edition']}", "/", f"{N} GEO agencies scored on {CHECKWORD} public checks."),
+            ("Findings", "/findings", f"{F['both']} of {N} agencies publish both AI-readability files."),
+            ("Methodology", "/methodology", f"The {CHECKWORD} checks and how to reproduce them."),
             ("About and disclosure", "/about", f"Published by {PUB}, which is ranked in the index."),
         ])
     return (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>'
@@ -1245,11 +1191,21 @@ def w(path, content):
 
 GENERATED = ["index.html", "index.md", "findings.html", "findings.md", "methodology.html",
              "methodology.md", "about.html", "about.md", "also-measured.html", "also-measured.md",
-             "llms.txt", "llms-full.txt", "agents.md", "robots.txt", "sitemap.xml", "feed.xml",
+             "llms.txt", "agents.md", "robots.txt", "sitemap.xml", "feed.xml",
              "data.json", "vercel.json", ".vercelignore"]
 
 
+# Files this site used to publish and must not publish any more. Deleted on every build so a
+# stale copy cannot sit in the repo and keep getting served. (llms-full.txt, removed 17 Aug 2026.)
+STALE = ["llms-full.txt"]
+
+
 def main():
+    for f in STALE:
+        q = os.path.join(OUT, f)
+        if os.path.exists(q):
+            os.remove(q)
+            print(f"removed stale file: {f}")
     # clear only generated output — never the repo, never _build/
     for f in GENERATED:
         p = os.path.join(OUT, f)
@@ -1269,7 +1225,7 @@ def main():
 
     w("methodology.md", md_from_html_page("Methodology — " + BRAND, [
         f"Version {DATA['method_version']}. Every point in {BRAND} comes from something a browser can fetch. There is no survey, no questionnaire and no opinion score.",
-        "## The seven checks", "",
+        f"## The {CHECKWORD} checks", "",
         *[f"**{c['label']} — {c['points']} points ({'AI readiness' if c['group']=='ai' else 'Buyer transparency'}).** {c['what']} How it was checked: {c['how']}" for c in DATA["criteria"]],
         "## Rules fixed before the audit",
         "A file counts only if it returns plain text; HTML or a soft 404 scores zero. A file behind a cross-host redirect still counts, with the redirect noted on that agency's profile. A sitemap counts at /sitemap.xml or at any path named in robots.txt. People must be named on the agency's own site — LinkedIn and client testimonials do not count. A price must be the agency's own price, not a client result or an industry average. Equal scores share a rank.",
@@ -1279,9 +1235,9 @@ def main():
     ]))
     w("findings.md", md_from_html_page(f"Findings — {BRAND}", [
         f"Measured {MEASURED_LONG}. Every claim below is countable from {SITE_URL}/data.json",
-        f"**01. One agency in {N} has done the full job on its own site.** {F['llms']} of {N} publish a working llms.txt, {F['full']} of {N} publish llms-full.txt, {F['agents']} of {N} publish agents.md, and {F['all3']} of {N} publish all three. Average AI-readiness score: {F['ai_avg']} of {AI_MAX}.",
+        f"**01. One agency in {N} has done the full job on its own site.** {F['llms']} of {N} publish a working llms.txt, {F['agents']} of {N} publish agents.md, and {F['both']} of {N} publish both. Average AI-readiness score: {F['ai_avg']} of {AI_MAX}.",
         f"**02. {F['no_robots']} of {N} robots.txt files never mention an AI crawler.** None of the eleven names checked appears. Thrive names two SEO tool crawlers and no AI crawler. Silverback Strategies invents a 'LLMs:' directive that no crawler reads.",
-        "**03. Four sites answer 'yes' to a file that isn't there.** Seer Interactive returns the homepage for /llms.txt. Omniscient Digital returns a web page for /llms-full.txt. uSERP returns a styled error page for all three. Go Fish Digital returns a JavaScript bot-check for /agents.md and /pricing/. A client reading status codes records a success.",
+        "**03. Three sites answer 'yes' to a file that isn't there.** Seer Interactive returns the homepage for /llms.txt. uSERP returns a styled error page for both files. Go Fish Digital returns a JavaScript bot-check for /agents.md and /pricing/. A client reading status codes records a success.",
         f"**04. Being open and being ready are different skills.** {F['team']} of {N} name a person, {F['client']} of {N} name a client, but only {F['pricing']} of {N} publish a price. Obility publishes six prices and 21 staff names and ships none of the three AI files. Minuttia publishes its founders' full names and its minimum fee inside llms.txt and nowhere a person can read them.",
         f"**05. The industry ranks itself.** Seven agencies in this index publish their own 'best GEO agency' lists, and every one ranks its publisher at or near the top. This index discloses its publisher on every page and publishes its raw data. {PUB} is ranked first here and loses {PUB_LOST} of {TRUST_MAX} transparency points under its own rules.",
     ]))
@@ -1306,7 +1262,6 @@ def main():
         paths.append((f"/agency/{a['slug']}", "0.8" if a.get("is_publisher") else "0.6"))
 
     w("llms.txt", llms_txt())
-    w("llms-full.txt", llms_full())
     w("agents.md", agents_md())
     w("robots.txt", robots_txt())
     w("sitemap.xml", sitemap(paths))
@@ -1320,7 +1275,6 @@ def main():
         "headers": [
             {"source": "/(.*).md", "headers": [{"key": "Content-Type", "value": "text/markdown; charset=utf-8"}]},
             {"source": "/llms.txt", "headers": [{"key": "Content-Type", "value": "text/plain; charset=utf-8"}]},
-            {"source": "/llms-full.txt", "headers": [{"key": "Content-Type", "value": "text/plain; charset=utf-8"}]},
             {"source": "/agents.md", "headers": [{"key": "Content-Type", "value": "text/markdown; charset=utf-8"}]},
             {"source": "/data.json", "headers": [{"key": "Access-Control-Allow-Origin", "value": "*"}]},
             {"source": "/fonts/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]},
@@ -1392,7 +1346,7 @@ Measured {MEASURED_LONG}. Published by {PUB} ({PUB_URL}), which is ranked in the
     print(f"built {N} agencies -> {OUT}")
     print(f"index.html at repo root: {os.path.exists(os.path.join(OUT, 'index.html'))}")
     print(f"every URL points at: {SITE_URL}")
-    print(f"pages: {4 + N} html, {4 + N} md, plus llms.txt llms-full.txt agents.md robots.txt sitemap.xml feed.xml data.json")
+    print(f"pages: {4 + N} html, {4 + N} md, plus llms.txt agents.md robots.txt sitemap.xml feed.xml data.json")
     print("top 6:", ", ".join(f"{a['rank']}{'=' if a['tied'] else ''} {a['name']} {a['total']}" for a in AG[:6]))
 
 

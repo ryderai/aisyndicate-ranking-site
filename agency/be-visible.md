@@ -1,23 +1,22 @@
-# BE VISIBLE — 14/100
+# BE VISIBLE — 15/100
 
 Rank 16 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at bevisibleagency.com on 14 August 2026.
 
 **A pure-play GEO agency getting B2B and SaaS brands cited in ChatGPT, Gemini and Perplexity.**
 
-- Index score: 14 of 100
+- Index score: 15 of 100
 - Also measured, not scored: 20 of 40
 
 > The only pure-play GEO agency in this index, and the only agency whose robots.txt takes the trouble to name four crawlers by name while naming none of the AI crawlers it sells visibility in.
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404.
-- **FAIL — Runs its own tracking software** (20 pts). The homepage names OtterlyAI — a third-party monitoring platform — rather than anything of their own. No proprietary tool, login or dashboard.
-- **PASS — Names the AI engines it covers** (14 pts). The AI visibility page names ChatGPT, Gemini, Perplexity, Copilot and Google AI Overviews.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Well-formed, with explicit allows for Googlebot, Bingbot, Twitterbot and facebookexternalhit. None of the eleven AI crawler names appears.
-- **FAIL — Price readable by a machine** (14 pts). /llms.txt, /llms-full.txt and /agents.md all 404, and no dollar figure appears on any page.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **FAIL — llms.txt published** (24 pts). 404.
+- **FAIL — Runs its own tracking software** (22 pts). The homepage names OtterlyAI — a third-party monitoring platform — rather than anything of their own. No proprietary tool, login or dashboard.
+- **PASS — Names the AI engines it covers** (15 pts). The AI visibility page names ChatGPT, Gemini, Perplexity, Copilot and Google AI Overviews.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Well-formed, with explicit allows for Googlebot, Bingbot, Twitterbot and facebookexternalhit. None of the eleven AI crawler names appears.
+- **FAIL — Price readable by a machine** (15 pts). /llms.txt and /agents.md both 404, and no dollar figure appears on any page.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

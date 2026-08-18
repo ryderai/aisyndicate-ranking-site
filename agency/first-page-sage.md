@@ -1,23 +1,22 @@
-# First Page Sage — 14/100
+# First Page Sage — 15/100
 
 Rank 16 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at firstpagesage.com on 14 August 2026.
 
 **B2B SEO and GEO/AEO, plus what it calls agentic search optimization.**
 
-- Index score: 14 of 100
+- Index score: 15 of 100
 - Also measured, not scored: 25 of 40
 
 > They publish their own ranking of the top answer engine optimization companies and place themselves in it.
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404.
-- **FAIL — Runs its own tracking software** (20 pts). No named software. The service pages show an unnamed "Analytics Dashboard" graphic with no product name and no login anywhere on the site.
-- **PASS — Names the AI engines it covers** (14 pts). The GEO page names ChatGPT, Gemini, Perplexity, Claude and SearchGPT.
-- **FAIL — robots.txt names AI crawlers** (14 pts). Stock WordPress with search-parameter blocks. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). /llms.txt, /llms-full.txt and /agents.md all 404 — no machine-readable file exists at all.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **FAIL — llms.txt published** (24 pts). 404.
+- **FAIL — Runs its own tracking software** (22 pts). No named software. The service pages show an unnamed "Analytics Dashboard" graphic with no product name and no login anywhere on the site.
+- **PASS — Names the AI engines it covers** (15 pts). The GEO page names ChatGPT, Gemini, Perplexity, Claude and SearchGPT.
+- **FAIL — robots.txt names AI crawlers** (15 pts). Stock WordPress with search-parameter blocks. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). /llms.txt and /agents.md both 404 — no machine-readable file exists at all.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

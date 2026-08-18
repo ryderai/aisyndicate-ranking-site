@@ -11,13 +11,12 @@ Rank 1 of 29 in The GEO Agency Index 2026 Edition. Audited at aisyndicate.com on
 
 ## The index (scored)
 
-- **PASS — llms.txt published** (22 pts). /llms.txt returns plain text, 23,989 bytes, opening "# AI Syndicate".
-- **PASS — Runs its own tracking software** (20 pts). Six named products — AI Pulse, AI Radar, Radar Pro, AI Territory, Territory Pro and AI Command — each with its own page under /products/, and a customer login at /#/signin.
-- **PASS — Names the AI engines it covers** (14 pts). The homepage and /features/ name twelve: ChatGPT, Claude, Google AI Overviews, Gemini, Perplexity, Copilot, Meta AI, Grok, DeepSeek, Mistral, Alexa+ and Siri.
-- **PASS — robots.txt names AI crawlers** (14 pts). robots.txt names all eleven audited AI crawlers and gives each "Allow: /". The only Disallow anywhere in the file is /api/.
-- **PASS — Price readable by a machine** (14 pts). /llms.txt, /llms-full.txt and /agents.md all carry the prices verbatim, including "AI Pulse: $499/month" and "AI Command: from $25,000".
-- **PASS — llms-full.txt published** (8 pts). /llms-full.txt returns plain text, 1,092,745 bytes.
-- **PASS — agents.md published** (8 pts). /agents.md returns plain text, 11,134 bytes, including entity disambiguation against aisyndicate.io.
+- **PASS — llms.txt published** (24 pts). /llms.txt returns plain text, 23,989 bytes, opening "# AI Syndicate".
+- **PASS — Runs its own tracking software** (22 pts). Six named products — AI Pulse, AI Radar, Radar Pro, AI Territory, Territory Pro and AI Command — each with its own page under /products/, and a customer login at /#/signin.
+- **PASS — Names the AI engines it covers** (15 pts). The homepage and /features/ name twelve: ChatGPT, Claude, Google AI Overviews, Gemini, Perplexity, Copilot, Meta AI, Grok, DeepSeek, Mistral, Alexa+ and Siri.
+- **PASS — robots.txt names AI crawlers** (15 pts). robots.txt names all eleven audited AI crawlers and gives each "Allow: /". The only Disallow anywhere in the file is /api/.
+- **PASS — Price readable by a machine** (15 pts). /llms.txt and /agents.md both carry the prices verbatim, including "AI Pulse: $499/month" and "AI Command: from $25,000".
+- **PASS — agents.md published** (9 pts). /agents.md returns plain text, 11,134 bytes, including entity disambiguation against aisyndicate.io.
 
 ## Also measured (not scored)
 

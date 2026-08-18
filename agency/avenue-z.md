@@ -1,21 +1,20 @@
-# Avenue Z — 36/100
+# Avenue Z — 39/100
 
 Rank 7 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at avenuez.com on 14 August 2026.
 
 **AI search optimization plus PR and performance media.**
 
-- Index score: 36 of 100
+- Index score: 39 of 100
 - Also measured, not scored: 25 of 40
 
 ## The index (scored)
 
-- **PASS — llms.txt published** (22 pts). Plain text at the canonical path, Rank Math generated. The cleanest llms.txt implementation in this index after the publisher's.
-- **FAIL — Runs its own tracking software** (20 pts). AIVx Reports are deliverable documents and the AEO Readiness Assessment is an email-gated quiz. No account, no login, no dashboard.
-- **PASS — Names the AI engines it covers** (14 pts). The AI optimization page names ChatGPT, Perplexity, Gemini, Google AI Overviews, Claude, Grok and Copilot.
-- **FAIL — robots.txt names AI crawlers** (14 pts). WordPress default. None of the eleven names appears.
-- **FAIL — Price readable by a machine** (14 pts). Their llms.txt exists but carries no price for their own work — the only figures are a third-party referral offer and blog-sourced funding numbers.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **PASS — llms.txt published** (24 pts). Plain text at the canonical path, Rank Math generated. The cleanest llms.txt implementation in this index after the publisher's.
+- **FAIL — Runs its own tracking software** (22 pts). AIVx Reports are deliverable documents and the AEO Readiness Assessment is an email-gated quiz. No account, no login, no dashboard.
+- **PASS — Names the AI engines it covers** (15 pts). The AI optimization page names ChatGPT, Perplexity, Gemini, Google AI Overviews, Claude, Grok and Copilot.
+- **FAIL — robots.txt names AI crawlers** (15 pts). WordPress default. None of the eleven names appears.
+- **FAIL — Price readable by a machine** (15 pts). Their llms.txt exists but carries no price for their own work — the only figures are a third-party referral offer and blog-sourced funding numbers.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

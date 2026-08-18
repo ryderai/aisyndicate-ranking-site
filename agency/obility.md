@@ -1,23 +1,22 @@
-# Obility — 14/100
+# Obility — 15/100
 
 Rank 16 (tied) of 29 in The GEO Agency Index 2026 Edition. Audited at obilityb2b.com on 14 August 2026.
 
 **B2B marketing with a named GEO service covering ChatGPT, Perplexity, Claude, AI Overviews and Reddit.**
 
-- Index score: 14 of 100
+- Index score: 15 of 100
 - Also measured, not scored: 40 of 40
 
 > The most open agency in this index on price and people, and one of the least prepared on its own site. It sells a Reddit visibility add-on for AI search while publishing none of the three AI-readability files.
 
 ## The index (scored)
 
-- **FAIL — llms.txt published** (22 pts). 404.
-- **FAIL — Runs its own tracking software** (20 pts). The only dashboard on the site is a paid line item — "Custom Dashboards ($5000+)" — which is agency work product, not software a client logs into.
-- **PASS — Names the AI engines it covers** (14 pts). The GEO page names ChatGPT, Perplexity, Claude, Google AI Overviews and Gemini.
-- **FAIL — robots.txt names AI crawlers** (14 pts). None of the eleven names appears. The file has two stacked "User-agent: *" groups, which is malformed.
-- **FAIL — Price readable by a machine** (14 pts). No machine-readable file exists on either host. Their three published tiers are HTML only.
-- **FAIL — llms-full.txt published** (8 pts). 404.
-- **FAIL — agents.md published** (8 pts). 404.
+- **FAIL — llms.txt published** (24 pts). 404.
+- **FAIL — Runs its own tracking software** (22 pts). The only dashboard on the site is a paid line item — "Custom Dashboards ($5000+)" — which is agency work product, not software a client logs into.
+- **PASS — Names the AI engines it covers** (15 pts). The GEO page names ChatGPT, Perplexity, Claude, Google AI Overviews and Gemini.
+- **FAIL — robots.txt names AI crawlers** (15 pts). None of the eleven names appears. The file has two stacked "User-agent: *" groups, which is malformed.
+- **FAIL — Price readable by a machine** (15 pts). No machine-readable file exists on either host. Their three published tiers are HTML only.
+- **FAIL — agents.md published** (9 pts). 404.
 
 ## Also measured (not scored)
 

@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Findings — what 29 GEO agencies&#x27; own sites look like | The GEO Agency Index</title>
-<meta name="description" content="Five findings from auditing 29 GEO agencies on 14 August 2026: 1 of 29 publish all three AI-readability files, 28 of 29 robots.txt files never name an AI crawler, and four sites return a success status for files that do not exist.">
+<meta name="description" content="Five findings from auditing 29 GEO agencies on 14 August 2026: 1 of 29 publish both AI-readability files, 28 of 29 robots.txt files never name an AI crawler, and three sites return a success status for files that do not exist.">
 <link rel="canonical" href="https://aisyndicate-ranking-site.vercel.app/findings">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="The GEO Agency Index">
 <meta property="og:title" content="Findings — what 29 GEO agencies&#x27; own sites look like | The GEO Agency Index">
-<meta property="og:description" content="Five findings from auditing 29 GEO agencies on 14 August 2026: 1 of 29 publish all three AI-readability files, 28 of 29 robots.txt files never name an AI crawler, and four sites return a success status for files that do not exist.">
+<meta property="og:description" content="Five findings from auditing 29 GEO agencies on 14 August 2026: 1 of 29 publish both AI-readability files, 28 of 29 robots.txt files never name an AI crawler, and three sites return a success status for files that do not exist.">
 <meta property="og:url" content="https://aisyndicate-ranking-site.vercel.app/findings">
 <meta property="og:image" content="https://aisyndicate-ranking-site.vercel.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -268,7 +268,7 @@ footer a:hover{color:var(--ink)}
 <a href="/about" class="">About</a>
 </nav>
 </div></header>
-<div class="folio"><div class="wrap"><span>2026 Edition</span><span>Measured 14 August 2026</span><span>Method version 1.0</span><span>29 agencies &middot; 7 scored checks</span></div></div>
+<div class="folio"><div class="wrap"><span>2026 Edition</span><span>Measured 14 August 2026</span><span>Method version 1.0</span><span>29 agencies &middot; 6 scored checks</span></div></div>
 
 <div class="hero"><div class="wrap narrow">
 <div class="kicker">Findings &middot; Measured 14 August 2026</div>
@@ -278,25 +278,23 @@ footer a:hover{color:var(--ink)}
 
 <section><div class="wrap narrow">
 <h2>01 &middot; One agency in 29 has done the full job on its own site</h2>
-<p>The three AI-readability files &mdash; <code>llms.txt</code>, <code>llms-full.txt</code> and <code>agents.md</code> &mdash; are the plainest signal that a business has thought about being read by a machine. Across 29 agencies that sell exactly that service:</p>
+<p>The two AI-readability files &mdash; <code>llms.txt</code> and <code>agents.md</code> &mdash; are the plainest signal that a business has thought about being read by a machine. Across 29 agencies that sell exactly that service:</p>
 <ul style="margin:16px 0 16px 22px;color:var(--ink2)">
 <li><b>15 of 29</b> publish a working llms.txt.</li>
-<li><b>1 of 29</b> publish llms-full.txt.</li>
 <li><b>1 of 29</b> publish agents.md.</li>
-<li><b>1 of 29</b> publish all three.</li>
+<li><b>1 of 29</b> publish both.</li>
 </ul>
-<p>Average AI-readiness score across the index: <b>29.9 out of 100</b>. Take the publisher out and it falls further.</p>
+<p>Average AI-readiness score across the index: <b>32.0 out of 100</b>. Take the publisher out and it falls further.</p>
 
 <h2 style="margin-top:44px">02 &middot; 28 of 29 robots.txt files never mention an AI crawler</h2>
 <p>We searched every robots.txt for eleven names: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Applebot-Extended, Bytespider, Amazonbot. In 28 files, not one of them appears. AI crawlers are left to whatever the catch-all rule happens to say.</p>
 <p>Two details make the point sharper. <b>Thrive</b>'s robots.txt names AhrefsBot and AhrefsSiteAudit &mdash; two SEO tools &mdash; and no AI crawler. <b>Silverback Strategies</b> adds a line reading <code>LLMs: https://www.silverbackstrategies.com/llms.txt</code>, which is not a real directive and which no crawler reads. Apart from the publisher's own file, it is the only robots.txt in the index that tries to address AI at all &mdash; in a language nothing understands.</p>
 
-<h2 style="margin-top:44px">03 &middot; Four sites answer "yes" to a file that isn't there</h2>
-<p>A missing file should return a 404. Four sites instead return a normal HTML page with a success status when asked for one of the AI files:</p>
+<h2 style="margin-top:44px">03 &middot; Three sites answer "yes" to a file that isn't there</h2>
+<p>A missing file should return a 404. Three sites instead return a normal HTML page with a success status when asked for one of the AI files:</p>
 <ul style="margin:16px 0 16px 22px;color:var(--ink2)">
 <li><b>Seer Interactive</b> &mdash; <code>/llms.txt</code> returns the homepage.</li>
-<li><b>Omniscient Digital</b> &mdash; <code>/llms-full.txt</code> returns the ordinary web page.</li>
-<li><b>uSERP</b> &mdash; all three files return a styled "we can't find that" page; the llms-full.txt version is served with <code>noindex</code>.</li>
+<li><b>uSERP</b> &mdash; both files return a styled "we can't find that" page rather than a 404.</li>
 <li><b>Go Fish Digital</b> &mdash; <code>/agents.md</code> returns a bot-check page that asks for JavaScript. AI crawlers do not run JavaScript. Their <code>/pricing/</code> page does the same thing, though that is a real page behind an interstitial rather than a missing file.</li>
 </ul>
 <p>This is worse than nothing. A client that reads status codes records a success and moves on with a page of navigation links where the answer should be.</p>
@@ -328,7 +326,7 @@ footer a:hover{color:var(--ink)}
 <a href="https://www.silverbackstrategies.com/lists/best-geo-agencies-generative-engine-optimization-in-2026-ranked-reviewed/" rel="nofollow noopener">Silverback Strategies</a> and
 <a href="https://firstpagesage.com/seo-blog/the-top-answer-engine-optimization-aeo-companies/" rel="nofollow noopener">First Page Sage</a>.
 That is the normal state of this category. This index is the tenth such list, so it does two things the others do not: it names its publisher on every page, and it publishes the raw dataset and a sensitivity test so the scoring can be checked rather than trusted.</p>
-<p>The publisher of this index, AI Syndicate, is ranked first here. So: 3 of the 7 checks are passed by AI Syndicate and nobody else, worth 30 of 100 points. <b>Delete all 3 and rescore, and it is still first</b> &mdash; that test is published in full on the <a href="/methodology">methodology page</a>. Five further checks were measured and left out of the score, and AI Syndicate does badly on three of them; they are published at <a href="/also-measured">Also measured</a> rather than buried.</p>
+<p>The publisher of this index, AI Syndicate, is ranked first here. So: 2 of the 6 checks are passed by AI Syndicate and nobody else, worth 24 of 100 points. <b>Delete all 2 and rescore, and it is still first</b> &mdash; that test is published in full on the <a href="/methodology">methodology page</a>. Five further checks were measured and left out of the score, and AI Syndicate does badly on three of them; they are published at <a href="/also-measured">Also measured</a> rather than buried.</p>
 </div></section>
 
 <section class="alt"><div class="wrap narrow">
@@ -348,8 +346,8 @@ That is the normal state of this category. This index is the tenth such list, so
 <div class="fgrid">
 <div><strong style="color:var(--ink)">The GEO Agency Index</strong><br>Measured 14 August 2026. Method version 1.0.</div>
 <div><a href="/methodology">Methodology</a> &middot; <a href="/also-measured">Also measured</a> &middot; <a href="/data.json">Raw data (JSON)</a> &middot; <a href="/findings">Findings</a> &middot; <a href="/about">About</a></div>
-<div><a href="/llms.txt">llms.txt</a> &middot; <a href="/llms-full.txt">llms-full.txt</a> &middot; <a href="/agents.md">agents.md</a> &middot; <a href="/feed.xml">RSS</a></div>
+<div><a href="/llms.txt">llms.txt</a> &middot; <a href="/agents.md">agents.md</a> &middot; <a href="/feed.xml">RSS</a> &middot; <a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=footer-credit" class="" >AI Syndicate</a></div>
 </div>
-<div class="fdisc">Published by <a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=footer-disclosure" class="" >AI Syndicate</a>, which is ranked in this index. No agency paid to be included, excluded or moved. <a href="/about">How the conflict is handled</a> &middot; <a href="/methodology">how every score was measured</a>.</div>
+<div class="fdisc">No agency paid to be included, excluded or moved. Every score is a public file you can open yourself. <a href="/about">How the conflict is handled</a> &middot; <a href="/methodology">how every score was measured</a>.</div>
 </div></footer>
 </body></html>

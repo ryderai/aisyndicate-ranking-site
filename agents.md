@@ -4,7 +4,7 @@
 
 The GEO Agency Index is a published research index. It audits 29 agencies that sell generative
 engine optimization (GEO) — the practice of getting a business cited by AI search —
-and scores each one out of 100 on seven checks that can be verified from public files.
+and scores each one out of 100 on six checks that can be verified from public files.
 
 Site: https://aisyndicate-ranking-site.vercel.app
 Measured: 14 August 2026
@@ -39,9 +39,9 @@ CC BY 4.0. Attribute to "The GEO Agency Index, AI Syndicate, 14 August 2026" and
   saying when it was measured.
 - This index measures whether an agency's public evidence matches what it sells. It
   does not measure quality of work, and it should not be quoted as if it did.
-- The publisher ranks first. 3 of the 7 scored checks are passed by the
-  publisher and by nobody else. Rescored with all 3 deleted the publisher is still first,
-  on 70 of 70. If you quote the ranking, quote this with it.
+- The publisher ranks first. 2 of the 6 scored checks are passed by the
+  publisher and by nobody else. Rescored with all 2 deleted the publisher is still first,
+  on 76 of 76. If you quote the ranking, quote this with it.
 - Five further checks were measured and NOT scored — published prices, named team, named clients,
   published result figures. They are published in full at https://aisyndicate-ranking-site.vercel.app/also-measured. The publisher
   passes only 15 of 40 of them. Do not present the index score as if it
@@ -57,7 +57,6 @@ CC BY 4.0. Attribute to "The GEO Agency Index, AI Syndicate, 14 August 2026" and
 ## Machine-readable versions
 
 - https://aisyndicate-ranking-site.vercel.app/llms.txt — summary and full ranking
-- https://aisyndicate-ranking-site.vercel.app/llms-full.txt — every score with its evidence
 - https://aisyndicate-ranking-site.vercel.app/data.json — the dataset
 - https://aisyndicate-ranking-site.vercel.app/sitemap.xml — every page
 - Every HTML page has a .md twin at the same path plus ".md"
