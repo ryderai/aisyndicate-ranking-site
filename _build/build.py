@@ -176,11 +176,6 @@ a{color:var(--accent-deep);text-decoration:underline;text-decoration-thickness:1
  text-decoration-color:#1f5c4d59}
 a:hover{color:var(--ink);text-decoration-color:currentColor}
 
-/* disclosure strip — sits above the masthead on every page */
-.disc{background:var(--bg-2);border-bottom:1px solid var(--rule);font-family:var(--mono);
- font-size:12.5px;line-height:1.55;color:var(--ink-2);padding:9px 0;letter-spacing:.005em}
-.disc b{font-weight:600;color:var(--ink)}
-.disc a{color:var(--accent-deep)}
 
 /* masthead */
 .top{background:var(--bg);border-bottom:3px double var(--rule-2)}
@@ -198,6 +193,11 @@ a:hover{color:var(--ink);text-decoration-color:currentColor}
 .folio{border-bottom:1px solid var(--rule);background:var(--bg)}
 .folio .wrap{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
  color:var(--ink-dim);padding:7px var(--gutter);display:flex;flex-wrap:wrap;gap:6px 20px}
+/* who publishes it — one plain line, no band, no label */
+.pubnote{background:var(--bg);border-bottom:1px solid var(--rule)}
+.pubnote .wrap{font-size:13px;line-height:1.55;color:var(--ink-dim);padding:8px var(--gutter)}
+.pubnote a{color:var(--ink-dim);text-decoration-color:#6b675c66}
+.pubnote a:hover{color:var(--ink)}
 
 /* hero */
 .hero{padding:58px 0 44px;background:var(--bg)}
@@ -429,7 +429,6 @@ def head(title, desc, path, extra_ld=""):
 {extra_ld}
 </head>
 <body>
-<div class="disc"><div class="wrap"><b>Disclosure:</b> This index is published by {ref('disclosure-strip', PUB)}, which is ranked in it. Every score comes from a public file you can check yourself &mdash; <a href="/methodology">here is how</a>.</div></div>
 <header class="top"><div class="wrap">
 <a class="logo" href="/">{LOGO}<span>The GEO Agency Index</span></a>
 <nav class="nav">
@@ -441,6 +440,7 @@ def head(title, desc, path, extra_ld=""):
 </nav>
 </div></header>
 <div class="folio"><div class="wrap"><span>{DATA['edition']}</span><span>Measured {MEASURED_LONG}</span><span>Method version {DATA['method_version']}</span><span>{N} agencies &middot; {len(AI_KEYS)} scored checks</span></div></div>
+<div class="pubnote"><div class="wrap">Published by {ref('publisher-note', PUB)}, which is ranked in this index. Every score comes from a public file you can check yourself &mdash; <a href="/methodology">here is how</a>.</div></div>
 """
 
 

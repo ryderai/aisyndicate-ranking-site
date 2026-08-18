@@ -73,11 +73,6 @@ a{color:var(--accent-deep);text-decoration:underline;text-decoration-thickness:1
  text-decoration-color:#1f5c4d59}
 a:hover{color:var(--ink);text-decoration-color:currentColor}
 
-/* disclosure strip — sits above the masthead on every page */
-.disc{background:var(--bg-2);border-bottom:1px solid var(--rule);font-family:var(--mono);
- font-size:12.5px;line-height:1.55;color:var(--ink-2);padding:9px 0;letter-spacing:.005em}
-.disc b{font-weight:600;color:var(--ink)}
-.disc a{color:var(--accent-deep)}
 
 /* masthead */
 .top{background:var(--bg);border-bottom:3px double var(--rule-2)}
@@ -95,6 +90,11 @@ a:hover{color:var(--ink);text-decoration-color:currentColor}
 .folio{border-bottom:1px solid var(--rule);background:var(--bg)}
 .folio .wrap{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
  color:var(--ink-dim);padding:7px var(--gutter);display:flex;flex-wrap:wrap;gap:6px 20px}
+/* who publishes it — one plain line, no band, no label */
+.pubnote{background:var(--bg);border-bottom:1px solid var(--rule)}
+.pubnote .wrap{font-size:13px;line-height:1.55;color:var(--ink-dim);padding:8px var(--gutter)}
+.pubnote a{color:var(--ink-dim);text-decoration-color:#6b675c66}
+.pubnote a:hover{color:var(--ink)}
 
 /* hero */
 .hero{padding:58px 0 44px;background:var(--bg)}
@@ -257,7 +257,6 @@ footer a:hover{color:var(--ink)}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["Article","HowTo"],"@id":"https://aisyndicate-ranking-site.vercel.app/methodology#a","headline":"Methodology \u2014 The GEO Agency Index","name":"Methodology \u2014 The GEO Agency Index","description":"The six public checks behind The GEO Agency Index, what each is worth, and how to reproduce them.","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en-US","author":{"@type":"Organization","name":"AI Syndicate","url":"https://www.aisyndicate.com/"},"publisher":{"@type":"Organization","name":"The GEO Agency Index","url":"https://aisyndicate-ranking-site.vercel.app"},"isPartOf":{"@type":"WebSite","name":"The GEO Agency Index","url":"https://aisyndicate-ranking-site.vercel.app"},"step":[{"@type":"HowToStep","name":"llms.txt published","text":"Request https://DOMAIN/llms.txt. Counts only if the response is real plain text. A page of HTML, a redirect to the homepage, or a 404 does not count."},{"@type":"HowToStep","name":"Runs its own tracking software","text":"Look for a named product with its own product page AND a working customer login or signup. Naming a third-party tool (Semrush, Ahrefs, Profound, Peec, Otterly, Scrunch) does not count. An internal \"framework\" or \"methodology\" the agency's own team runs does not count \u2014 the client has to be able to log in."},{"@type":"HowToStep","name":"Names the AI engines it covers","text":"Look for at least three of: ChatGPT, Perplexity, Gemini, Google AI Overviews, Google AI Mode, Copilot, Claude, Grok, Meta AI, DeepSeek, Mistral, Alexa, Siri. Saying \"AI search engines\" or \"LLMs\" in general does not count. If a site's bot protection stops an automated client reading the page, it does not count \u2014 an AI cannot read it either."},{"@type":"HowToStep","name":"robots.txt names AI crawlers","text":"Read https://DOMAIN/robots.txt and look for any of: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Applebot-Extended, Bytespider, Amazonbot. Full points only if at least one is named and none of the eleven is denied site-wide access. A rule blocking a single path, such as an API directory, is not site-wide denial."},{"@type":"HowToStep","name":"Price readable by a machine","text":"Look for a dollar figure for their own service inside /llms.txt or /agents.md on their own domain. A price on an HTML page only does not count \u2014 that is the whole point of the check."},{"@type":"HowToStep","name":"agents.md published","text":"Request https://DOMAIN/agents.md. Same rule: plain text only."},{"@type":"HowToStep","name":"Prices published","text":"Check the homepage, /pricing, and any pricing link in the navigation. The figure has to be attached to their own service, not to a client's result or an industry average. Any public URL on their own domain counts, including a text file \u2014 one agency publishes its minimum fee only inside llms.txt, and it scores."},{"@type":"HowToStep","name":"Team named on their own site","text":"Check the homepage, /about and /team, and any public text file on their own domain. LinkedIn does not count. People quoted as clients in testimonials are not that agency's staff."},{"@type":"HowToStep","name":"Case studies name the client","text":"Check the case studies or results page for at least one named client."},{"@type":"HowToStep","name":"Case studies carry a number","text":"Check the same pages for a stated percentage, dollar figure or multiple."},{"@type":"HowToStep","name":"You can buy without a sales call","text":"Look for a public signup, a checkout, a \"start free trial\", or a plan button that leads to creating an account. \"Book a call\", \"Get a proposal\", \"Request a quote\", \"Contact us\" and a \"free audit\" that is really a form all count as no."}]}</script>
 </head>
 <body>
-<div class="disc"><div class="wrap"><b>Disclosure:</b> This index is published by <a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=disclosure-strip" class="" >AI Syndicate</a>, which is ranked in it. Every score comes from a public file you can check yourself &mdash; <a href="/methodology">here is how</a>.</div></div>
 <header class="top"><div class="wrap">
 <a class="logo" href="/"><svg viewBox="0 0 30 30" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none"><rect x="0.6" y="0.6" width="28.8" height="28.8" stroke="currentColor" stroke-width="1.2"/><rect x="5.20" y="5.20" width="4.4" height="4.4" fill="currentColor"/><rect x="12.90" y="5.70" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="20.10" y="5.70" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="5.70" y="12.90" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="12.40" y="12.40" width="4.4" height="4.4" fill="currentColor"/><rect x="19.60" y="12.40" width="4.4" height="4.4" fill="currentColor"/><rect x="5.20" y="19.60" width="4.4" height="4.4" fill="currentColor"/><rect x="12.90" y="20.10" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="20.10" y="20.10" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/></svg><span>The GEO Agency Index</span></a>
 <nav class="nav">
@@ -269,6 +268,7 @@ footer a:hover{color:var(--ink)}
 </nav>
 </div></header>
 <div class="folio"><div class="wrap"><span>2026 Edition</span><span>Measured 14 August 2026</span><span>Method version 1.0</span><span>29 agencies &middot; 6 scored checks</span></div></div>
+<div class="pubnote"><div class="wrap">Published by <a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=publisher-note" class="" >AI Syndicate</a>, which is ranked in this index. Every score comes from a public file you can check yourself &mdash; <a href="/methodology">here is how</a>.</div></div>
 
 <div class="hero"><div class="wrap narrow">
 <div class="kicker">Methodology &middot; Version 1.0</div>

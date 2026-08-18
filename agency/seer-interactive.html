@@ -73,11 +73,6 @@ a{color:var(--accent-deep);text-decoration:underline;text-decoration-thickness:1
  text-decoration-color:#1f5c4d59}
 a:hover{color:var(--ink);text-decoration-color:currentColor}
 
-/* disclosure strip — sits above the masthead on every page */
-.disc{background:var(--bg-2);border-bottom:1px solid var(--rule);font-family:var(--mono);
- font-size:12.5px;line-height:1.55;color:var(--ink-2);padding:9px 0;letter-spacing:.005em}
-.disc b{font-weight:600;color:var(--ink)}
-.disc a{color:var(--accent-deep)}
 
 /* masthead */
 .top{background:var(--bg);border-bottom:3px double var(--rule-2)}
@@ -95,6 +90,11 @@ a:hover{color:var(--ink);text-decoration-color:currentColor}
 .folio{border-bottom:1px solid var(--rule);background:var(--bg)}
 .folio .wrap{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
  color:var(--ink-dim);padding:7px var(--gutter);display:flex;flex-wrap:wrap;gap:6px 20px}
+/* who publishes it — one plain line, no band, no label */
+.pubnote{background:var(--bg);border-bottom:1px solid var(--rule)}
+.pubnote .wrap{font-size:13px;line-height:1.55;color:var(--ink-dim);padding:8px var(--gutter)}
+.pubnote a{color:var(--ink-dim);text-decoration-color:#6b675c66}
+.pubnote a:hover{color:var(--ink)}
 
 /* hero */
 .hero{padding:58px 0 44px;background:var(--bg)}
@@ -257,7 +257,6 @@ footer a:hover{color:var(--ink)}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AnalysisNewsArticle","@id":"https://aisyndicate-ranking-site.vercel.app/agency/seer-interactive#a","url":"https://aisyndicate-ranking-site.vercel.app/agency/seer-interactive","headline":"Seer Interactive: The GEO Agency Index audit record","description":"Audit record for Seer Interactive (seerinteractive.com) in The GEO Agency Index 2026 Edition: 15 of 100 for AI readiness on its own website, 25 of 40 for buyer transparency. Measured 14 August 2026 from public files only. Not an assessment of the quality of their work.","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en-US","author":{"@type":"Organization","name":"AI Syndicate","url":"https://www.aisyndicate.com/"},"publisher":{"@type":"Organization","name":"The GEO Agency Index","url":"https://aisyndicate-ranking-site.vercel.app"},"isPartOf":{"@type":"WebSite","name":"The GEO Agency Index","url":"https://aisyndicate-ranking-site.vercel.app"},"about":{"@type":"Organization","name":"Seer Interactive","url":"https://seerinteractive.com/"},"disambiguatingDescription":"This is a record of which public files and public pages exist on this agency's own website. It is not a review, a rating of service quality, or a recommendation.","isBasedOn":{"@type":"Dataset","name":"The GEO Agency Index dataset","url":"https://aisyndicate-ranking-site.vercel.app/data.json"}}</script>
 </head>
 <body>
-<div class="disc"><div class="wrap"><b>Disclosure:</b> This index is published by <a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=disclosure-strip" class="" >AI Syndicate</a>, which is ranked in it. Every score comes from a public file you can check yourself &mdash; <a href="/methodology">here is how</a>.</div></div>
 <header class="top"><div class="wrap">
 <a class="logo" href="/"><svg viewBox="0 0 30 30" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none"><rect x="0.6" y="0.6" width="28.8" height="28.8" stroke="currentColor" stroke-width="1.2"/><rect x="5.20" y="5.20" width="4.4" height="4.4" fill="currentColor"/><rect x="12.90" y="5.70" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="20.10" y="5.70" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="5.70" y="12.90" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="12.40" y="12.40" width="4.4" height="4.4" fill="currentColor"/><rect x="19.60" y="12.40" width="4.4" height="4.4" fill="currentColor"/><rect x="5.20" y="19.60" width="4.4" height="4.4" fill="currentColor"/><rect x="12.90" y="20.10" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/><rect x="20.10" y="20.10" width="3.4" height="3.4" stroke="currentColor" stroke-width="1"/></svg><span>The GEO Agency Index</span></a>
 <nav class="nav">
@@ -269,6 +268,7 @@ footer a:hover{color:var(--ink)}
 </nav>
 </div></header>
 <div class="folio"><div class="wrap"><span>2026 Edition</span><span>Measured 14 August 2026</span><span>Method version 1.0</span><span>29 agencies &middot; 6 scored checks</span></div></div>
+<div class="pubnote"><div class="wrap">Published by <a href="https://www.aisyndicate.com/?utm_source=geo-agency-index&utm_medium=referral&utm_campaign=2026-geo-agency-index&utm_content=publisher-note" class="" >AI Syndicate</a>, which is ranked in this index. Every score comes from a public file you can check yourself &mdash; <a href="/methodology">here is how</a>.</div></div>
 
 <section><div class="wrap"><div class="pf">
 <div>

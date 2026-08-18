@@ -146,7 +146,9 @@ def main():
         for p in pages:
             st, body, _ = get(p)
             checks += 1
-            if "Disclosure:" not in body or "AI Syndicate" not in body:
+            # The tinted "Disclosure:" band was replaced by a plain line under the masthead
+            # on 18 Aug 2026. The sentence itself is what must never disappear.
+            if "which is ranked in this index" not in body or "AI Syndicate" not in body:
                 fails.append(f"{p} missing publisher disclosure")
 
         # 6. scores in HTML match scores recomputed from data.json
